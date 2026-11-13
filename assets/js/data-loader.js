@@ -1,155 +1,160 @@
 /**
- * DATA-LOADER.JS
- * Chịu trách nhiệm tải dữ liệu trung tâm từ file data.json và quản lý LocalStorage
+ * DATA-LOADER.JS (Phiên bản hỗ trợ đa tài khoản học viên)
  */
 
 const STORAGE_KEYS = {
-  THEME: 'studyhub_theme',
+  THEME: 'studyhub_theme_mode',
   COMPLETED_LESSONS: 'studyhub_completed_lessons',
   FAVORITE_QUESTIONS: 'studyhub_favorite_questions',
-  PRACTICE_STATS: 'studyhub_practice_stats',
+  PRACTICE_RECORDS: 'studyhub_practice_records',
   EXAM_HISTORY: 'studyhub_exam_history',
-  ROADMAP_TASKS: 'studyhub_roadmap_tasks'
+  ROADMAP_CHECKLIST: 'studyhub_roadmap_checklist'
 };
 
 const DataLoader = {
-  cache: null,
+  cachedData: null,
 
-  async loadData() {
-    if (this.cache) {
-      return this.cache;
+  // Tạo khóa lưu trữ riêng biệt cho từng học viên đang đăng nhập
+  getUserScopedKey(baseKey) {
+    if (window.AuthService && AuthService.getCurrentUser()) {
+      const user = AuthService.getCurrentUser();
+      return `${baseKey}_${user.username}`;
     }
-    try {
-      const response = await fetch('data.json', { cache: 'no-store' });
-      if (!response.ok) {
-        throw new Error(`Không thể tải data.json (HTTP ${response.status})`);
-      }
-      const data = await response.json();
-      this.cache = data;
-      return data;
-    } catch (error) {
-      console.error('Lỗi đọc file JSON:', error);
-      throw error;
-    }
+    return baseKey;
   },
 
-  getArray(key) {
+  async fetchSiteData() {
+    if (this.cachedData) {
+      return this.cachedData;
+    }
+    const response = await fetch('data.json', { cache: 'no-store' });
+    if (!response.ok) {
+      throw new Error(`Không thể tải tệp data.json (HTTP ${response.status})`);
+    }
+    const jsonData = await response.json();
+    this.cachedData = jsonData;
+    return jsonData;
+  },
+
+  getList(key) {
     try {
-      const raw = localStorage.getItem(key);
+      const scopedKey = this.getUserScopedKey(key);
+      const raw = localStorage.getItem(scopedKey);
       return raw ? JSON.parse(raw) : [];
-    } catch (e) {
+    } catch (err) {
       return [];
     }
   },
 
-  saveArray(key, arr) {
-    localStorage.setItem(key, JSON.stringify(arr));
+  saveList(key, list) {
+    const scopedKey = this.getUserScopedKey(key);
+    localStorage.setItem(scopedKey, JSON.stringify(list));
   },
 
-  toggleItemInArray(key, itemId) {
-    const list = this.getArray(key);
-    const index = list.indexOf(itemId);
-    let added = false;
-    if (index === -1) {
-      list.push(itemId);
-      added = true;
+  toggleListItem(key, id) {
+    const list = this.getList(key);
+    const idx = list.indexOf(id);
+    let isAdded = false;
+    if (idx === -1) {
+      list.push(id);
+      isAdded = true;
     } else {
-      list.splice(index, 1);
+      list.splice(idx, 1);
     }
-    this.saveArray(key, list);
-    return added;
+    this.saveList(key, list);
+    return isAdded;
   },
 
-  isLessonCompleted(lessonId) {
-    return this.getArray(STORAGE_KEYS.COMPLETED_LESSONS).includes(lessonId);
+  isLessonDone(lessonId) {
+    return this.getList(STORAGE_KEYS.COMPLETED_LESSONS).includes(lessonId);
   },
 
-  toggleLessonCompleted(lessonId) {
-    return this.toggleItemInArray(STORAGE_KEYS.COMPLETED_LESSONS, lessonId);
+  toggleLessonDone(lessonId) {
+    return this.toggleListItem(STORAGE_KEYS.COMPLETED_LESSONS, lessonId);
   },
 
-  isFavoriteQuestion(questionId) {
-    return this.getArray(STORAGE_KEYS.FAVORITE_QUESTIONS).includes(questionId);
+  isQuestionFavorite(questionId) {
+    return this.getList(STORAGE_KEYS.FAVORITE_QUESTIONS).includes(questionId);
   },
 
-  toggleFavoriteQuestion(questionId) {
-    return this.toggleItemInArray(STORAGE_KEYS.FAVORITE_QUESTIONS, questionId);
+  toggleQuestionFavorite(questionId) {
+    return this.toggleListItem(STORAGE_KEYS.FAVORITE_QUESTIONS, questionId);
   },
 
-  isRoadmapTaskDone(taskId) {
-    return this.getArray(STORAGE_KEYS.ROADMAP_TASKS).includes(taskId);
+  isRoadmapTaskCompleted(taskId) {
+    return this.getList(STORAGE_KEYS.ROADMAP_CHECKLIST).includes(taskId);
   },
 
-  toggleRoadmapTask(taskId) {
-    return this.toggleItemInArray(STORAGE_KEYS.ROADMAP_TASKS, taskId);
+  toggleRoadmapTaskCompleted(taskId) {
+    return this.toggleListItem(STORAGE_KEYS.ROADMAP_CHECKLIST, taskId);
   },
 
-  recordPracticeAnswer(questionId, isCorrect) {
+  savePracticeAttempt(questionId, isCorrect) {
     try {
-      const raw = localStorage.getItem(STORAGE_KEYS.PRACTICE_STATS);
-      const stats = raw ? JSON.parse(raw) : {};
-      stats[questionId] = {
+      const scopedKey = this.getUserScopedKey(STORAGE_KEYS.PRACTICE_RECORDS);
+      const raw = localStorage.getItem(scopedKey);
+      const records = raw ? JSON.parse(raw) : {};
+      records[questionId] = {
         isCorrect: Boolean(isCorrect),
-        updatedAt: new Date().toISOString()
+        timestamp: new Date().toISOString()
       };
-      localStorage.setItem(STORAGE_KEYS.PRACTICE_STATS, JSON.stringify(stats));
-    } catch (e) {
-      console.error(e);
+      localStorage.setItem(scopedKey, JSON.stringify(records));
+    } catch (err) {
+      console.error(err);
     }
   },
 
-  getPracticeStats() {
+  getPracticeRecords() {
     try {
-      const raw = localStorage.getItem(STORAGE_KEYS.PRACTICE_STATS);
+      const scopedKey = this.getUserScopedKey(STORAGE_KEYS.PRACTICE_RECORDS);
+      const raw = localStorage.getItem(scopedKey);
       return raw ? JSON.parse(raw) : {};
-    } catch (e) {
+    } catch (err) {
       return {};
     }
   },
 
-  saveExamResult(examResult) {
-    const history = this.getArray(STORAGE_KEYS.EXAM_HISTORY);
-    history.unshift({
-      ...examResult,
+  addExamHistory(entry) {
+    const list = this.getList(STORAGE_KEYS.EXAM_HISTORY);
+    list.unshift({
+      ...entry,
       submittedAt: new Date().toLocaleString('vi-VN')
     });
-    this.saveArray(STORAGE_KEYS.EXAM_HISTORY, history.slice(0, 20));
+    this.saveList(STORAGE_KEYS.EXAM_HISTORY, list.slice(0, 20));
   },
 
   getExamHistory() {
-    return this.getArray(STORAGE_KEYS.EXAM_HISTORY);
+    return this.getList(STORAGE_KEYS.EXAM_HISTORY);
   },
 
-  getProgressSummary(data) {
-    const completedLessons = this.getArray(STORAGE_KEYS.COMPLETED_LESSONS).length;
+  calculateOverallProgress(data) {
+    const doneLessons = this.getList(STORAGE_KEYS.COMPLETED_LESSONS).length;
     const totalLessons = data.theory ? data.theory.length : 0;
 
-    const practiceStats = this.getPracticeStats();
-    const answeredCount = Object.keys(practiceStats).length;
-    const correctCount = Object.values(practiceStats).filter(x => x.isCorrect).length;
+    const practiceRecords = this.getPracticeRecords();
+    const answeredQuestions = Object.keys(practiceRecords).length;
+    const correctQuestions = Object.values(practiceRecords).filter(r => r.isCorrect).length;
     const totalQuestions = data.questions ? data.questions.length : 0;
 
-    let totalRoadmapTasks = 0;
+    let totalTasks = 0;
     if (data.roadmap) {
       data.roadmap.forEach(stage => {
-        totalRoadmapTasks += stage.tasks.length;
+        totalTasks += stage.tasks.length;
       });
     }
-    const doneRoadmapTasks = this.getArray(STORAGE_KEYS.ROADMAP_TASKS).length;
-    const examHistory = this.getExamHistory();
+    const doneTasks = this.getList(STORAGE_KEYS.ROADMAP_CHECKLIST).length;
 
     return {
-      completedLessons,
+      doneLessons,
       totalLessons,
-      lessonPercent: totalLessons ? Math.round((completedLessons / totalLessons) * 100) : 0,
-      answeredCount,
-      correctCount,
+      lessonPercent: totalLessons ? Math.round((doneLessons / totalLessons) * 100) : 0,
+      answeredQuestions,
+      correctQuestions,
       totalQuestions,
-      practicePercent: totalQuestions ? Math.round((answeredCount / totalQuestions) * 100) : 0,
-      doneRoadmapTasks,
-      totalRoadmapTasks,
-      roadmapPercent: totalRoadmapTasks ? Math.round((doneRoadmapTasks / totalRoadmapTasks) * 100) : 0,
-      examsTaken: examHistory.length
+      practicePercent: totalQuestions ? Math.round((answeredQuestions / totalQuestions) * 100) : 0,
+      doneTasks,
+      totalTasks,
+      roadmapPercent: totalTasks ? Math.round((doneTasks / totalTasks) * 100) : 0
     };
   }
 };

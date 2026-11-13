@@ -1,15 +1,13 @@
 /**
- * ROUTER.JS
- * Quản lý thanh điều hướng (Header), Chân trang (Footer), Nút quay về trang chủ,
- * Điều hướng Trang trước / Trang tiếp theo và Chế độ Sáng / Tối từ dữ liệu JSON
+ * ROUTER.JS (Tích hợp Quản lý Phiên đăng nhập Học viên trên Header)
  */
 
 const Router = {
-  getCurrentPageId() {
-    const bodyPage = document.body.getAttribute('data-page');
-    if (bodyPage) return bodyPage;
-    const path = window.location.pathname.split('/').pop() || 'index.html';
-    const mapping = {
+  getActivePageId() {
+    const attrPage = document.body.getAttribute('data-page');
+    if (attrPage) return attrPage;
+    const fileName = window.location.pathname.split('/').pop() || 'index.html';
+    const map = {
       'index.html': 'home',
       'theory.html': 'theory',
       'topics.html': 'topics',
@@ -17,17 +15,18 @@ const Router = {
       'exams.html': 'exams',
       'documents.html': 'documents',
       'roadmap.html': 'roadmap',
-      'contact.html': 'contact'
+      'contact.html': 'contact',
+      'login.html': 'login'
     };
-    return mapping[path] || 'home';
+    return map[fileName] || 'home';
   },
 
-  initTheme() {
-    const savedTheme = localStorage.getItem(STORAGE_KEYS.THEME) || 'light';
-    document.documentElement.setAttribute('data-theme', savedTheme);
+  applySavedTheme() {
+    const saved = localStorage.getItem(STORAGE_KEYS.THEME) || 'light';
+    document.documentElement.setAttribute('data-theme', saved);
   },
 
-  toggleTheme() {
+  toggleThemeMode() {
     const current = document.documentElement.getAttribute('data-theme') || 'light';
     const next = current === 'dark' ? 'light' : 'dark';
     document.documentElement.setAttribute('data-theme', next);
@@ -35,22 +34,28 @@ const Router = {
     const btn = document.getElementById('theme-toggle-btn');
     if (btn) {
       btn.textContent = next === 'dark' ? '☀️' : '🌙';
-      btn.title = next === 'dark' ? 'Chuyển sang chế độ Sáng' : 'Chuyển sang chế độ Tối';
     }
   },
 
   renderHeader(data) {
+    if (window.AuthService) {
+      const allowed = AuthService.enforceAuthGuard();
+      if (!allowed) return;
+      AuthService.initLoginPageEvents();
+    }
+
     const headerEl = document.getElementById('site-header');
     if (!headerEl) return;
 
-    const currentPageId = this.getCurrentPageId();
+    const currentPageId = this.getActivePageId();
     const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+    const currentUser = window.AuthService ? AuthService.getCurrentUser() : null;
 
-    const navItemsHtml = data.navigation.map(item => {
-      const isActive = item.id === currentPageId ? 'active' : '';
+    const menuHtml = data.navigation.map(item => {
+      const activeClass = item.id === currentPageId ? 'active' : '';
       return `
         <li>
-          <a href="${item.url}" class="nav-link ${isActive}">
+          <a href="${item.url}" class="nav-link ${activeClass}">
             <span>${item.icon}</span>
             <span>${item.title}</span>
           </a>
@@ -58,22 +63,36 @@ const Router = {
       `;
     }).join('');
 
+    const userWidgetHtml = currentUser
+      ? `
+        <span class="badge badge-success" title="Lớp: ${currentUser.schoolClass}">
+          👤 ${currentUser.fullName}
+        </span>
+        <button type="button" class="btn btn-outline btn-sm" id="logout-btn" title="Đăng xuất tài khoản">
+          Đăng xuất
+        </button>
+      `
+      : `
+        <a href="login.html" class="btn btn-primary btn-sm">🔐 Đăng nhập</a>
+      `;
+
     headerEl.innerHTML = `
       <div class="container header-inner">
-        <a href="index.html" class="brand-logo" title="Về Trang chủ ${data.siteInfo.title}">
-          <span class="brand-badge">💻</span>
+        <a href="index.html" class="brand-logo">
+          <span class="brand-icon">💻</span>
           <span>${data.siteInfo.title}</span>
         </a>
-        <nav aria-label="Menu chính">
+        <nav aria-label="Điều hướng chính">
           <ul class="nav-menu" id="main-nav-menu">
-            ${navItemsHtml}
+            ${menuHtml}
           </ul>
         </nav>
         <div class="header-actions">
-          <button type="button" class="icon-btn" id="theme-toggle-btn" title="Đổi giao diện Sáng/Tối">
+          ${userWidgetHtml}
+          <button type="button" class="icon-btn" id="theme-toggle-btn" title="Chuyển chế độ Sáng / Tối">
             ${currentTheme === 'dark' ? '☀️' : '🌙'}
           </button>
-          <button type="button" class="icon-btn mobile-menu-btn" id="mobile-menu-btn" title="Mở menu">
+          <button type="button" class="icon-btn mobile-menu-btn" id="mobile-menu-btn" title="Mở danh mục">
             ☰
           </button>
         </div>
@@ -82,7 +101,12 @@ const Router = {
 
     const themeBtn = document.getElementById('theme-toggle-btn');
     if (themeBtn) {
-      themeBtn.addEventListener('click', () => this.toggleTheme());
+      themeBtn.addEventListener('click', () => this.toggleThemeMode());
+    }
+
+    const logoutBtn = document.getElementById('logout-btn');
+    if (logoutBtn && window.AuthService) {
+      logoutBtn.addEventListener('click', () => AuthService.logout());
     }
 
     const mobileBtn = document.getElementById('mobile-menu-btn');
@@ -94,22 +118,22 @@ const Router = {
     }
   },
 
-  renderPageTopBar(data) {
-    const topBarEl = document.getElementById('page-top-bar');
-    if (!topBarEl) return;
+  renderTopNavigationBar(data) {
+    const barEl = document.getElementById('page-top-bar');
+    if (!barEl) return;
 
-    const currentPageId = this.getCurrentPageId();
-    const currentNav = data.navigation.find(n => n.id === currentPageId);
-    if (!currentNav || currentPageId === 'home') {
-      topBarEl.style.display = 'none';
+    const currentPageId = this.getActivePageId();
+    const currentItem = data.navigation.find(item => item.id === currentPageId);
+    if (!currentItem || currentPageId === 'home') {
+      barEl.style.display = 'none';
       return;
     }
 
-    topBarEl.innerHTML = `
+    barEl.innerHTML = `
       <div class="breadcrumb">
         <a href="index.html">🏠 Trang chủ</a>
         <span>/</span>
-        <strong>${currentNav.icon} ${currentNav.title}</strong>
+        <strong>${currentItem.icon} ${currentItem.title}</strong>
       </div>
       <div>
         <a href="index.html" class="btn btn-outline btn-sm">⬅ Quay lại Trang chủ</a>
@@ -117,26 +141,27 @@ const Router = {
     `;
   },
 
-  renderPageBottomNav(data) {
-    const bottomNavEl = document.getElementById('page-bottom-nav');
-    if (!bottomNavEl) return;
+  renderBottomNavigationBar(data) {
+    const bottomEl = document.getElementById('page-bottom-nav');
+    if (!bottomEl) return;
 
-    const currentPageId = this.getCurrentPageId();
-    const navList = data.navigation;
-    const currentIndex = navList.findIndex(n => n.id === currentPageId);
+    const currentPageId = this.getActivePageId();
+    const navItems = data.navigation;
+    const idx = navItems.findIndex(item => item.id === currentPageId);
+    if (idx === -1) return;
 
-    const prevItem = currentIndex > 0 ? navList[currentIndex - 1] : null;
-    const nextItem = currentIndex < navList.length - 1 ? navList[currentIndex + 1] : null;
+    const prevPage = idx > 0 ? navItems[idx - 1] : null;
+    const nextPage = idx < navItems.length - 1 ? navItems[idx + 1] : null;
 
-    bottomNavEl.innerHTML = `
+    bottomEl.innerHTML = `
       <div>
-        ${prevItem ? `<a href="${prevItem.url}" class="btn btn-outline">← Trang trước: ${prevItem.title}</a>` : ''}
+        ${prevPage ? `<a href="${prevPage.url}" class="btn btn-outline">← Trang trước: ${prevPage.title}</a>` : ''}
       </div>
       <div>
-        ${currentPageId !== 'home' ? `<a href="index.html" class="btn btn-outline">🏠 Về Trang chủ</a>` : ''}
+        ${currentPageId !== 'home' ? `<a href="index.html" class="btn btn-outline">🏠 Quay lại Trang chủ</a>` : ''}
       </div>
       <div>
-        ${nextItem ? `<a href="${nextItem.url}" class="btn btn-primary">Trang tiếp: ${nextItem.title} →</a>` : ''}
+        ${nextPage ? `<a href="${nextPage.url}" class="btn btn-primary">Trang tiếp: ${nextPage.title} →</a>` : ''}
       </div>
     `;
   },
@@ -146,7 +171,7 @@ const Router = {
     if (!footerEl) return;
 
     const { author } = data.siteInfo;
-    const quickLinks = data.navigation.slice(0, 6).map(item =>
+    const navLinks = data.navigation.map(item =>
       `<li style="margin-bottom: 0.35rem;"><a href="${item.url}">${item.icon} ${item.title}</a></li>`
     ).join('');
 
@@ -154,25 +179,25 @@ const Router = {
       <div class="container">
         <div class="footer-grid">
           <div>
-            <div class="footer-title">💻 ${data.siteInfo.title}</div>
+            <div class="footer-heading">💻 ${data.siteInfo.title}</div>
             <p style="margin-bottom: 0.75rem;">${data.siteInfo.description}</p>
-            <span class="badge">JSON-Driven Architecture • GDPT 2018</span>
+            <span class="badge">JSON-Driven Website • Chuẩn GDPT 2018</span>
           </div>
           <div>
-            <div class="footer-title">Liên kết nhanh</div>
+            <div class="footer-heading">Danh mục các trang</div>
             <ul style="list-style: none;">
-              ${quickLinks}
+              ${navLinks}
             </ul>
           </div>
           <div>
-            <div class="footer-title">Thông tin tác giả</div>
+            <div class="footer-heading">Thông tin tác giả</div>
             <p><strong>Họ và tên:</strong> ${author.name}</p>
             <p><strong>Số điện thoại:</strong> <a href="tel:${author.phone}">${author.phone}</a></p>
             <p><strong>Vai trò:</strong> ${author.role}</p>
           </div>
         </div>
-        <div style="margin-top: 1.75rem; padding-top: 1.25rem; border-top: 1px solid var(--border-color); text-align: center; font-size: 0.85rem;">
-          © 2026 <strong>${data.siteInfo.title}</strong> — Phát triển bởi <strong>${author.name}</strong> (SĐT: ${author.phone}).
+        <div style="margin-top: 1.65rem; padding-top: 1.15rem; border-top: 1px solid var(--border-color); text-align: center; font-size: 0.86rem;">
+          © 2026 <strong>${data.siteInfo.title}</strong> — Thiết kế & Phát triển bởi <strong>${author.name}</strong> (SĐT: ${author.phone}).
         </div>
       </div>
     `;
