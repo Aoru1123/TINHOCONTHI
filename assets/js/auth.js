@@ -106,7 +106,7 @@ const AuthService = {
   // Chặn người chưa đăng nhập vào các trang nội bộ
   enforceAuthGuard() {
     const pageId = document.body.getAttribute('data-page');
-    const publicPages = ['login', 'contact'];
+    const publicPages = ['home', 'login', 'contact'];
     const currentUser = this.getCurrentUser();
 
     if (!currentUser && !publicPages.includes(pageId)) {
