@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Đăng nhập & Đăng ký Học viên | TIN HỌC THPT – STUDY HUB</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <style>
+    .auth-wrapper {
+      min-height: calc(100vh - 160px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1rem;
+    }
+    .auth-card {
+      width: 100%;
+      max-width: 460px;
+      background-color: var(--bg-surface, var(--bg-card));
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 2rem;
+      box-shadow: var(--shadow-md);
+    }
+    .auth-tabs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
+      background-color: var(--bg-subtle, var(--bg-muted));
+      padding: 0.35rem;
+      border-radius: 10px;
+      margin-bottom: 1.5rem;
+    }
+    .auth-tab-btn {
+      padding: 0.6rem;
+      border: none;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      background: transparent;
+      color: var(--text-secondary);
+      transition: all 0.2s ease;
+    }
+    .auth-tab-btn.active {
+      background-color: var(--primary);
+      color: #ffffff;
+    }
+    .form-group {
+      margin-bottom: 1rem;
+    }
+    .form-group label {
+      display: block;
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-bottom: 0.35rem;
+    }
+    .form-group input,
+    .form-group select {
+      width: 100%;
+    }
+    .auth-alert {
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+      display: none;
+    }
+    .auth-alert.error {
+      display: block;
+      background-color: var(--danger-soft, var(--danger-bg));
+      color: var(--danger);
+      border: 1px solid var(--danger);
+    }
+    .auth-alert.success {
+      display: block;
+      background-color: var(--success-soft, var(--success-bg));
+      color: var(--success);
+      border: 1px solid var(--success);
+    }
+  </style>
+</head>
+<body data-page="login">
+  <header class="site-header" id="site-header"></header>
+
+  <main class="main-content">
+    <div class="container auth-wrapper">
+      <div class="auth-card">
+        <div style="text-align: center; margin-bottom: 1.25rem;">
+          <span class="badge" style="margin-bottom: 0.5rem;">🔒 CỔNG TÀI KHOẢN HỌC VIÊN</span>
+          <h1 class="card-title" style="font-size: 1.45rem;">TIN HỌC THPT – STUDY HUB</h1>
+          <p style="color: var(--text-secondary); font-size: 0.9rem;">
+            Đăng nhập để lưu trữ bảo mật tiến độ học tập và kết quả thi thử của riêng bạn.
+          </p>
+        </div>
+
+        <div class="auth-tabs">
+          <button type="button" class="auth-tab-btn active" id="tab-login-btn">Đăng nhập</button>
+          <button type="button" class="auth-tab-btn" id="tab-register-btn">Tạo tài khoản</button>
+        </div>
+
+        <div id="auth-message" class="auth-alert"></div>
+
+        <!-- Form Đăng nhập -->
+        <form id="login-form">
+          <div class="form-group">
+            <label for="login-username">Tên đăng nhập hoặc Mã học viên</label>
+            <input type="text" id="login-username" class="search-input" required placeholder="Ví dụ: hocvien12a1" autocomplete="username" />
+          </div>
+          <div class="form-group">
+            <label for="login-password">Mật khẩu</label>
+            <input type="password" id="login-password" class="search-input" required placeholder="Nhập mật khẩu..." autocomplete="current-password" />
+          </div>
+          <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 0.5rem;">
+            🚀 Đăng nhập vào hệ thống
+          </button>
+        </form>
+
+        <!-- Form Đăng ký -->
+        <form id="register-form" style="display: none;">
+          <div class="form-group">
+            <label for="reg-fullname">Họ và tên học sinh</label>
+            <input type="text" id="reg-fullname" class="search-input" required placeholder="Ví dụ: Nguyễn Văn A" />
+          </div>
+          <div class="form-group">
+            <label for="reg-class">Lớp / Trường THPT</label>
+            <input type="text" id="reg-class" class="search-input" required placeholder="Ví dụ: 12A1 - THPT Chuyên" />
+          </div>
+          <div class="form-group">
+            <label for="reg-username">Tên đăng nhập (viết liền, không dấu)</label>
+            <input type="text" id="reg-username" class="search-input" required placeholder="Ví dụ: nguyenvana12" autocomplete="username" />
+          </div>
+          <div class="form-group">
+            <label for="reg-password">Mật khẩu (tối thiểu 6 ký tự)</label>
+            <input type="password" id="reg-password" class="search-input" required placeholder="Tạo mật khẩu bảo mật..." autocomplete="new-password" />
+          </div>
+          <div class="form-group">
+            <label for="reg-confirm">Nhập lại mật khẩu</label>
+            <input type="password" id="reg-confirm" class="search-input" required placeholder="Xác nhận lại mật khẩu..." autocomplete="new-password" />
+          </div>
+          <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 0.5rem;">
+            ✨ Đăng ký tài khoản học viên
+          </button>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer" id="site-footer"></footer>
+
+  <script src="assets/js/auth.js"></script>
+  <script src="assets/js/data-loader.js"></script>
+  <script src="assets/js/router.js"></script>
+  <script src="assets/js/quiz.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
