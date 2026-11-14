@@ -11,6 +11,7 @@ const Router = {
     const fileName = window.location.pathname.split('/').pop() || 'index.html';
     const map = {
       'index.html': 'home',
+      'videos.html': 'videos',
       'theory.html': 'theory',
       'topics.html': 'topics',
       'practice.html': 'practice',

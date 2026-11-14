@@ -1,0 +1,265 @@
+/* ============================================================
+   NEXUS TECH EDU // PHONG CÁCH ĐẬM CHẤT CÔNG NGHỆ CYBERPUNK HUD
+   SGK TIN HỌC KẾT NỐI TRI THỨC VỚI CUỘC SỐNG - ÔN THI THPT QUỐC GIA
+   ============================================================ */
+
+:root {
+  --bg-deep: #060913;
+  --bg-card: rgba(13, 20, 36, 0.75);
+  --bg-card-hover: rgba(22, 34, 61, 0.85);
+  --cyan-glow: #00f2fe;
+  --cyan-dim: rgba(0, 242, 254, 0.15);
+  --violet-glow: #8b5cf6;
+  --emerald-glow: #10b981;
+  --amber-glow: #f59e0b;
+  --border-neon: rgba(0, 242, 254, 0.25);
+  --border-glow-active: rgba(0, 242, 254, 0.7);
+  --hud-line: rgba(0, 242, 254, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--bg-deep);
+  color: #e2e8f0;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+.font-tech {
+  font-family: 'Orbitron', 'Plus Jakarta Sans', monospace, sans-serif;
+  letter-spacing: 0.05em;
+}
+
+.font-code {
+  font-family: 'JetBrains Mono', Consolas, Monaco, monospace;
+}
+
+/* ----------------- CYBER GRID & AMBIENT GLOW BACKGROUND ----------------- */
+.cyber-bg {
+  background-color: #060913;
+  background-image: 
+    radial-gradient(circle at 50% 0%, rgba(14, 165, 233, 0.18), transparent 45%),
+    radial-gradient(circle at 10% 40%, rgba(139, 92, 246, 0.12), transparent 35%),
+    radial-gradient(circle at 90% 70%, rgba(16, 185, 129, 0.10), transparent 40%),
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 100% 100%, 48px 48px, 48px 48px;
+  background-position: center top;
+}
+
+/* ----------------- GLASSMORPHISM & NEON BORDERS ----------------- */
+.glass-panel {
+  background: var(--bg-card);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border-neon);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.45);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-panel:hover {
+  border-color: rgba(0, 242, 254, 0.45);
+  box-shadow: 0 12px 40px -10px rgba(0, 242, 254, 0.25);
+}
+
+.neon-border-cyan {
+  border-color: rgba(0, 242, 254, 0.5);
+  box-shadow: 0 0 15px rgba(0, 242, 254, 0.25), inset 0 0 15px rgba(0, 242, 254, 0.05);
+}
+
+.neon-glow-text {
+  text-shadow: 0 0 12px rgba(0, 242, 254, 0.6), 0 0 24px rgba(0, 242, 254, 0.2);
+}
+
+.neon-glow-violet {
+  text-shadow: 0 0 12px rgba(139, 92, 246, 0.6), 0 0 24px rgba(139, 92, 246, 0.2);
+}
+
+/* ----------------- TECH CORNERS & HUD ACCENTS ----------------- */
+.tech-corner {
+  position: relative;
+}
+
+.tech-corner::before,
+.tech-corner::after {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.tech-corner::before {
+  top: -1px;
+  left: -1px;
+  border-top: 2px solid var(--cyan-glow);
+  border-left: 2px solid var(--cyan-glow);
+}
+
+.tech-corner::after {
+  bottom: -1px;
+  right: -1px;
+  border-bottom: 2px solid var(--cyan-glow);
+  border-right: 2px solid var(--cyan-glow);
+}
+
+/* ----------------- SCANLINE EFFECT ----------------- */
+.scanlines {
+  position: relative;
+  overflow: hidden;
+}
+
+.scanlines::after {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+  z-index: 2;
+  background-size: 100% 3px, 6px 100%;
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+/* ----------------- TECH BUTTONS ----------------- */
+.btn-cyber-primary {
+  position: relative;
+  background: linear-gradient(135deg, rgba(6, 182, 212, 0.9), rgba(59, 130, 246, 0.9));
+  color: #ffffff;
+  font-weight: 600;
+  border: 1px solid rgba(0, 242, 254, 0.6);
+  box-shadow: 0 0 20px rgba(6, 182, 212, 0.4);
+  transition: all 0.25s ease;
+  overflow: hidden;
+}
+
+.btn-cyber-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: 0.5s;
+}
+
+.btn-cyber-primary:hover::before {
+  left: 100%;
+}
+
+.btn-cyber-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 30px rgba(6, 182, 212, 0.6);
+}
+
+.btn-cyber-outline {
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(0, 242, 254, 0.35);
+  color: #38bdf8;
+  transition: all 0.2s ease;
+}
+
+.btn-cyber-outline:hover {
+  background: rgba(6, 182, 212, 0.15);
+  border-color: rgba(0, 242, 254, 0.8);
+  color: #ffffff;
+  box-shadow: 0 0 15px rgba(0, 242, 254, 0.3);
+}
+
+/* ----------------- CUSTOM SCROLLBAR ----------------- */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: #090d18;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(6, 182, 212, 0.35);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(6, 182, 212, 0.7);
+}
+
+/* ----------------- BADGES & PULSE ----------------- */
+.pulse-badge {
+  position: relative;
+}
+
+.pulse-badge::before {
+  content: '';
+  position: absolute;
+  top: -2px; left: -2px; right: -2px; bottom: -2px;
+  border-radius: inherit;
+  border: 1px solid #00f2fe;
+  animation: pulse-border 2s cubic-bezier(0.24, 0, 0.38, 1) infinite;
+}
+
+@keyframes pulse-border {
+  0% { transform: scale(1); opacity: 0.8; }
+  100% { transform: scale(1.15); opacity: 0; }
+}
+
+/* ----------------- AUDIO VISUALIZER BARS (DECORATIVE) ----------------- */
+.sound-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 14px;
+}
+
+.sound-bar {
+  width: 2.5px;
+  background: #00f2fe;
+  border-radius: 1px;
+  animation: soundBarAnim 1s ease-in-out infinite alternate;
+}
+
+.sound-bar:nth-child(1) { height: 40%; animation-delay: 0.1s; }
+.sound-bar:nth-child(2) { height: 90%; animation-delay: 0.3s; }
+.sound-bar:nth-child(3) { height: 60%; animation-delay: 0.2s; }
+.sound-bar:nth-child(4) { height: 100%; animation-delay: 0.4s; }
+
+@keyframes soundBarAnim {
+  0% { height: 20%; }
+  100% { height: 100%; }
+}
+
+/* ----------------- CODE BLOCK STYLES ----------------- */
+pre code {
+  color: #a5f3fc;
+  text-shadow: 0 0 1px rgba(165, 243, 252, 0.4);
+}
+
+.token-keyword { color: #f43f5e; font-weight: 600; }
+.token-function { color: #38bdf8; }
+.token-string { color: #34d399; }
+.token-comment { color: #64748b; font-style: italic; }
+.token-number { color: #fbbf24; }
+
+/* ----------------- MODAL ANIMATIONS ----------------- */
+.modal-enter {
+  animation: modalScaleIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes modalScaleIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.96) translateY(12px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}

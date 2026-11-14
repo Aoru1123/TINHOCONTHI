@@ -14,6 +14,7 @@
   },
   "navigation": [
     { "id": "home", "title": "Trang chủ", "url": "index.html", "icon": "🏠" },
+    { "id": "videos", "title": "Video bài giảng", "url": "videos.html", "icon": "🎥" },
     { "id": "theory", "title": "Kho lý thuyết", "url": "theory.html", "icon": "📘" },
     { "id": "topics", "title": "Chuyên đề", "url": "topics.html", "icon": "🧩" },
     { "id": "practice", "title": "Luyện tập", "url": "practice.html", "icon": "✍️" },
