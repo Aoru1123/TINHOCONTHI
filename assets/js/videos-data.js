@@ -1,4 +1,4 @@
-/**
+﻿/**
  * HỆ THỐNG DỮ LIỆU BÀI GIẢNG TIN HỌC THPT - BỘ SÁCH KẾT NỐI TRI THỨC VỚI CUỘC SỐNG
  * Chuẩn chương trình GDPT 2018 & Định hướng cấu trúc đề thi Tốt nghiệp THPT Quốc Gia
  */
@@ -48,7 +48,7 @@ const CURRICULUM_DATA = {
       },
       badge: "TRỌNG TÂM THI 2025",
       youtubeId: "rfscVS0vtbw", // Fallback video or real educational video
-      videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+      videoUrl: "https://vjs.zencdn.net/v/oceans.mp4",
       poster: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&auto=format&fit=crop&q=80",
       description: "Phân tích bản chất của đệ quy: điều kiện dừng (base case), bước đệ quy, cơ chế Stack bộ nhớ và bài toán kinh điển (Tháp Hà Nội, Dãy Fibonacci, Merge Sort). Chuyên đề trọng điểm xuất hiện trong phần câu hỏi phân loại 8-10 điểm kỳ thi Tốt nghiệp THPT.",
       chapters: [
@@ -122,7 +122,7 @@ print(f"2^10 = {result}") # Kết quả mong đợi: 1024
       },
       badge: "ĐỀ XUẤT HỌC NGAY",
       youtubeId: "HXV3zeRR3h4",
-      videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
+      videoUrl: "https://vjs.zencdn.net/v/oceans.mp4",
       poster: "https://images.unsplash.com/photo-1544383835-bda2bc66a55d?w=800&auto=format&fit=crop&q=80",
       description: "Nắm vững toàn bộ kiến thức CSDL quan hệ: Khóa chính (Primary Key), Khóa ngoại (Foreign Key), Bậc quan hệ 1-1, 1-N, N-N. Hướng dẫn chi tiết cú pháp SQL: SELECT, WHERE, GROUP BY, HAVING, INNER JOIN chuẩn định dạng đề thi Tốt nghiệp THPT.",
       chapters: [
@@ -194,7 +194,7 @@ ORDER BY DiemTrungBinh DESC;
       },
       badge: "KIẾN THỨC MỚI GDPT 2018",
       youtubeId: "aircAruvnKk",
-      videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+      videoUrl: "https://vjs.zencdn.net/v/oceans.mp4",
       poster: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&auto=format&fit=crop&q=80",
       description: "Bài giảng chuẩn mực về Khái niệm AI hẹp (Narrow AI) vs AI tổng quát (AGI), nguyên lý Học máy (Machine Learning), Học sâu (Deep Learning), các mô hình ngôn ngữ lớn (LLM) và vấn đề đạo đức, an toàn khi sử dụng AI theo SGK Kết nối tri thức Lớp 12.",
       chapters: [
@@ -256,7 +256,7 @@ print("Kết quả đánh giá:", check_spam(["Trúng thưởng", "Link lạ"]))
       },
       badge: "HOT THI THPT",
       youtubeId: "kJQP7kiw5Fk",
-      videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4",
+      videoUrl: "https://vjs.zencdn.net/v/oceans.mp4",
       poster: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&auto=format&fit=crop&q=80",
       description: "Chữa chi tiết 100% câu hỏi đề thi minh họa theo 3 phần mới nhất của Bộ Giáo Dục: Phần I (Trắc nghiệm 4 lựa chọn), Phần II (Trắc nghiệm Đúng/Sai 4 ý - cách tính điểm lũy tiến 0.1 - 0.25 - 0.5 - 1.0), Phần III (Trả lời ngắn, tính kết quả thuật toán).",
       chapters: [
@@ -321,7 +321,7 @@ print("Giá trị S:", s) # Đáp án: 8 + 12 + 14 = 34
       },
       badge: "KHOA HỌC MÁY TÍNH",
       youtubeId: "kPRA0W1kECg",
-      videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
+      videoUrl: "https://vjs.zencdn.net/v/oceans.mp4",
       poster: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&auto=format&fit=crop&q=80",
       description: "Trực quan hóa sinh động 3 thuật toán sắp xếp trọng tâm SGK Lớp 11 Kết nối tri thức: Sắp xếp chèn (Insertion Sort), Sắp xếp chọn (Selection Sort), Sắp xếp nổi bọt (Bubble Sort). Đếm số phép so sánh và số phép hoán đổi.",
       chapters: [
@@ -382,7 +382,7 @@ print("Mảng sau khi sắp xếp:  ", bubble_sort(test_list))
       },
       badge: "LÝ THUYẾT ĂN ĐIỂM",
       youtubeId: "P2cK0F6Vv3g",
-      videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
+      videoUrl: "https://vjs.zencdn.net/v/oceans.mp4",
       poster: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&auto=format&fit=crop&q=80",
       description: "Tìm hiểu kiến trúc mô hình TCP/IP, địa chỉ IPv4 vs IPv6, tên miền DNS, thiết bị mạng (Switch, Router, Access Point). Các biện pháp phòng chống mã độc (Virus, Worm, Trojan, Ransomware) và Luật an ninh mạng Việt Nam.",
       chapters: [
@@ -446,7 +446,7 @@ print("Kiểm tra 256.10.0.1:  ", is_valid_ipv4("256.10.0.1"))
       },
       badge: "NỀN TẢNG CỐT LÕI",
       youtubeId: "kqtD5dpn9C8",
-      videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyBlazes.mp4",
+      videoUrl: "https://vjs.zencdn.net/v/oceans.mp4",
       poster: "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?w=800&auto=format&fit=crop&q=80",
       description: "Xây dựng tư duy lập trình vững chắc từ con số 0: Biến, kiểu dữ liệu int, float, str, bool; phép toán số học & logic (and, or, not); cấu trúc rẽ nhánh if-elif-else và các bài toán thực tế trong SGK Kết nối tri thức.",
       chapters: [
@@ -503,7 +503,7 @@ print(f"Tổng tiền điện cho {so_kwh} kWh là: {tien:,} VNĐ")
       },
       badge: "LÝ THUYẾT CỐT LÕI",
       youtubeId: "LFA_V_oJ1Xk",
-      videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WeAreGoingOnBullrun.mp4",
+      videoUrl: "https://vjs.zencdn.net/v/oceans.mp4",
       poster: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&auto=format&fit=crop&q=80",
       description: "Hiểu sâu bản chất cách máy tính lưu trữ thông tin: Chuyển đổi giữa hệ thập phân (Dec), hệ nhị phân (Bin) và hệ thập lục phân (Hex). Các đơn vị đo dung lượng Bit, Byte, KB, MB, GB, TB và bảng mã ký tự Unicode.",
       chapters: [
@@ -556,7 +556,7 @@ print(f"Thập lục phân:{hex_str} (bỏ tiền tố 0x -> {hex_str[2:].upper(
       },
       badge: "NÂNG CAO 9-10 ĐIỂM",
       youtubeId: "I5lre-jT70M",
-      videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WhatCarCanYouGetForAGrand.mp4",
+      videoUrl: "https://vjs.zencdn.net/v/oceans.mp4",
       poster: "https://images.unsplash.com/photo-1509228468518-180dd4864904?w=800&auto=format&fit=crop&q=80",
       description: "Nguyên lý LIFO (Vào sau - Ra trước) của Stack và FIFO (Vào trước - Ra trước) của Queue. Cài đặt hoàn chỉnh bằng Python List và module `collections.deque`. Ứng dụng giải bài toán kiểm tra tính hợp lệ của dấu ngoặc và hàng đợi in ấn.",
       chapters: [

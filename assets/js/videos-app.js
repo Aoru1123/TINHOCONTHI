@@ -581,13 +581,15 @@ function closeVideoPlayer() {
   if (modal) modal.classList.add('hidden');
   document.body.classList.remove('overflow-hidden');
 
-  // Pause active video element
+  // Pause active video element & reset container to stop audio
   const videoEl = document.getElementById('html5-video-player');
   if (videoEl) videoEl.pause();
+  const videoContainer = document.getElementById('player-screen-container');
+  if (videoContainer) videoContainer.innerHTML = '';
   AppState.activeVideo = null;
 }
 
-function renderPlayerModalContent(video) {
+function renderPlayerModalContent(video, playerMode = 'auto') {
   // Title & Header info
   document.getElementById('player-video-title').innerText = video.title;
   document.getElementById('player-video-ref').innerText = `${video.bookRef} • Lớp ${video.grade}`;
@@ -595,33 +597,60 @@ function renderPlayerModalContent(video) {
   document.getElementById('player-instructor-title').innerText = video.instructor.title;
   document.getElementById('player-instructor-avatar').src = video.instructor.avatar;
 
+  const useYouTube = (playerMode === 'youtube' || (playerMode === 'auto' && video.youtubeId));
+
   // Set video source
   const videoContainer = document.getElementById('player-screen-container');
   if (videoContainer) {
-    videoContainer.innerHTML = `
-      <div class="relative w-full h-full bg-black flex items-center justify-center group/video">
-        <video 
-          id="html5-video-player"
-          src="${video.videoUrl}" 
-          poster="${video.poster}"
-          controls 
-          autoplay
-          class="w-full h-full object-contain"
-        ></video>
-        <!-- Futuristic Scanline effect -->
-        <div class="absolute inset-0 scanlines pointer-events-none opacity-20"></div>
-        
-        <!-- Live Tech HUD Info Overlay on top of video -->
-        <div class="absolute top-3 left-3 flex items-center gap-2 pointer-events-none">
-          <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-cyan-950/80 text-cyan-300 border border-cyan-500/40">
-            NEXUS STREAM // 1080p 60FPS
-          </span>
-          <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-black/60 text-emerald-400 border border-emerald-500/30 flex items-center gap-1">
-            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> SẴN SÀNG
-          </span>
+    if (useYouTube && video.youtubeId) {
+      videoContainer.innerHTML = `
+        <div class="relative w-full h-full bg-black flex items-center justify-center group/video">
+          <iframe 
+            id="youtube-video-player"
+            class="w-full h-full border-0"
+            src="https://www.youtube-nocookie.com/embed/${video.youtubeId}?autoplay=1&enablejsapi=1&rel=0" 
+            title="${video.title}"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            allowfullscreen>
+          </iframe>
+          
+          <!-- Live Tech HUD Info Overlay on top of video -->
+          <div class="absolute top-3 left-3 flex items-center gap-2 pointer-events-none">
+            <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-cyan-950/80 text-cyan-300 border border-cyan-500/40">
+              YOUTUBE STREAM // 1080p
+            </span>
+            <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-black/60 text-emerald-400 border border-emerald-500/30 flex items-center gap-1">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> SẴN SÀNG
+            </span>
+          </div>
         </div>
-      </div>
-    `;
+      `;
+    } else {
+      videoContainer.innerHTML = `
+        <div class="relative w-full h-full bg-black flex items-center justify-center group/video">
+          <video 
+            id="html5-video-player"
+            src="${video.videoUrl}" 
+            poster="${video.poster}"
+            controls 
+            playsinline
+            class="w-full h-full object-contain"
+          ></video>
+          <!-- Futuristic Scanline effect -->
+          <div class="absolute inset-0 scanlines pointer-events-none opacity-20"></div>
+          
+          <!-- Live Tech HUD Info Overlay on top of video -->
+          <div class="absolute top-3 left-3 flex items-center gap-2 pointer-events-none">
+            <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-cyan-950/80 text-cyan-300 border border-cyan-500/40">
+              NEXUS STREAM // MP4
+            </span>
+            <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-black/60 text-emerald-400 border border-emerald-500/30 flex items-center gap-1">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> SẴN SÀNG
+            </span>
+          </div>
+        </div>
+      `;
+    }
   }
 
   // Render Tabs navigation
@@ -742,10 +771,18 @@ function switchPlayerTab(tabName) {
 
 function seekVideo(seconds) {
   playTechSound('click');
+  const ytIframe = document.getElementById('youtube-video-player');
+  if (ytIframe && ytIframe.contentWindow) {
+    ytIframe.contentWindow.postMessage(JSON.stringify({
+      event: 'command',
+      func: 'seekTo',
+      args: [seconds, true]
+    }), '*');
+  }
   const videoEl = document.getElementById('html5-video-player');
   if (videoEl) {
     videoEl.currentTime = seconds;
-    videoEl.play();
+    videoEl.play().catch(() => {});
   }
 }
 
