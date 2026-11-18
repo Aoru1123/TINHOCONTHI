@@ -747,59 +747,201 @@
   ],
   "documents": [
     {
-      "id": "doc-01",
-      "title": "Sổ tay Tóm tắt Lý thuyết Tin học 12 (Định hướng ICT & CS)",
-      "category": "Lý thuyết trọng tâm",
-      "format": "PDF / Tài liệu số",
-      "pages": "42 trang",
+      "id": "doc-10-01",
+      "grade": "10",
+      "gradeName": "Tin học 10 KNTT",
+      "title": "Sổ tay Số hóa Thông tin, Bảng mã ASCII & Hệ nhị phân (Binary)",
+      "category": "Biểu diễn dữ liệu",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/0/01/ASCII7bits.png",
+      "imageCaption": "Bảng mã ký tự ASCII 7-bit tiêu chuẩn và biểu diễn nhị phân tương ứng",
+      "format": "Cẩm nang PDF",
+      "pages": "18 trang",
       "updatedAt": "2026",
-      "description": "Hệ thống hóa sơ đồ tư duy và bảng so sánh toàn bộ 7 chủ đề Tin học 12 theo Chương trình GDPT 2018.",
+      "description": "Hướng dẫn chi tiết phương pháp chuyển đổi cơ số giữa hệ thập phân (Dec), nhị phân (Bin) và thập lục phân (Hex); quy tắc mã hóa văn bản theo ASCII, Unicode (UTF-8) và biểu diễn số nguyên có dấu bằng số bù 2.",
       "highlights": [
-        "So sánh chi tiết Switch, Router, Modem và Access Point",
-        "Bảng tra cứu nhanh 25 thẻ HTML5 và thuộc tính CSS hay gặp trong đề thi",
-        "Tổng hợp từ khóa nhận biết nhanh câu hỏi Đúng/Sai"
+        "Bảng quy đổi các đơn vị đo lượng thông tin: 1 Byte = 8 bit, KB, MB, GB, TB",
+        "Phương pháp biểu diễn số nguyên bù 2 và số thực dấu phẩy động",
+        "Bài tập tính dung lượng lưu trữ tệp văn bản, hình ảnh RGB và tệp âm thanh"
       ]
     },
     {
-      "id": "doc-02",
-      "title": "Chuyên đề Truy vấn SQL & Cơ sở dữ liệu quan hệ thực chiến",
-      "category": "Cơ sở dữ liệu",
+      "id": "doc-10-02",
+      "grade": "10",
+      "gradeName": "Tin học 10 KNTT",
+      "title": "Bản đồ Tư duy Cú pháp & Kiểu dữ liệu Ngôn ngữ Python",
+      "category": "Lập trình Python",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/1/1f/Python_logo_01.svg",
+      "imageCaption": "Hệ thống cú pháp và cấu trúc điều khiển trong ngôn ngữ lập trình Python 3",
+      "format": "Infographic / PDF",
+      "pages": "24 trang",
+      "updatedAt": "2026",
+      "description": "Hệ thống hóa toàn bộ kiến thức lập trình cơ bản theo SGK Tin học 10 KNTT: quy tắc đặt tên biến, lệnh gán (=), cấu trúc rẽ nhánh if/elif/else, vòng lặp for và while, dữ liệu danh sách (List) và xâu ký tự (String).",
+      "highlights": [
+        "Bảng từ khóa (Keywords) và các lỗi cú pháp SyntaxError thường gặp nhất",
+        "Minh họa chỉ số dương (0, 1, 2) và chỉ số âm (-1, -2, -3) trong danh sách",
+        "Các phương thức cốt lõi: append(), insert(), remove(), pop(), split(), join()"
+      ]
+    },
+    {
+      "id": "doc-10-03",
+      "grade": "10",
+      "gradeName": "Tin học 10 KNTT",
+      "title": "Cẩm nang Xây dựng Hàm (Function) & Kỹ thuật Gỡ lỗi (Debugging)",
+      "category": "Giải quyết vấn đề",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/0/0c/ComputerMemoryHierarchy.svg",
+      "imageCaption": "Mô hình phân cấp tổ chức bộ nhớ máy tính: Thanh ghi, Cache, RAM và Bộ nhớ ngoài",
+      "format": "Sổ tay thực hành",
+      "pages": "20 trang",
+      "updatedAt": "2026",
+      "description": "Kỹ năng thiết kế hàm con với từ khóa def, truyền tham số, giá trị trả về return; phân biệt phạm vi biến cục bộ (Local) và toàn cục (Global); nhận diện và xử lý ngoại lệ TypeError, ZeroDivisionError, NameError.",
+      "highlights": [
+        "Quy tắc phạm vi biến LEGB (Local -> Enclosing -> Global -> Built-in)",
+        "Kỹ thuật đặt câu lệnh in theo dõi (Trace print) để tìm lỗi logic",
+        "Bài tập mẫu viết hàm kiểm tra số nguyên tố, tính lũy thừa và tìm ước chung"
+      ]
+    },
+    {
+      "id": "doc-11-01",
+      "grade": "11",
+      "gradeName": "Tin học 11 KNTT",
+      "title": "Sơ đồ Kiến trúc Hệ điều hành & Quản lý Tài nguyên Máy tính",
+      "category": "Hệ điều hành",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/5/55/Computer_storage_hierarchy.png",
+      "imageCaption": "Sơ đồ phân cấp tốc độ và dung lượng lưu trữ do hệ điều hành quản lý",
       "format": "Tài liệu chuyên đề",
-      "pages": "28 trang",
+      "pages": "26 trang",
       "updatedAt": "2026",
-      "description": "Hướng dẫn từng bước phân tích lược đồ CSDL, xác định khóa chính/khóa ngoài và giải 50 bài tập câu lệnh SELECT - JOIN - GROUP BY.",
+      "description": "Phân tích cấu trúc phân tầng của hệ điều hành (Kernel, Device Driver, File System), cơ chế quản lý tiến trình (Process), hệ thống phân quyền tệp tin và so sánh hệ điều hành Windows, Linux, Android, iOS.",
       "highlights": [
-        "Mẫu câu lệnh SQL chuẩn dễ nhớ theo quy tắc 5 bước",
-        "Phân biệt lỗi sai thường gặp giữa WHERE và HAVING",
-        "Bài tập vận dụng quản lý Điểm học sinh, Thư viện, Bán hàng"
+        "Vòng đời và 3 trạng thái của tiến trình: Sẵn sàng (Ready), Đang chạy (Running), Chờ (Waiting)",
+        "So sánh chi tiết phần mềm mã nguồn mở (GPL) và phần mềm thương mại mã nguồn đóng",
+        "Cẩm nang phòng ngừa mã độc (Virus, Worm, Trojan, Ransomware) và tấn công Phishing"
       ]
     },
     {
-      "id": "doc-03",
-      "title": "Tuyển tập Thuật toán & Kỹ năng đọc code Python tốc độ cao",
-      "category": "Lập trình & Thuật toán",
+      "id": "doc-11-02",
+      "grade": "11",
+      "gradeName": "Tin học 11 KNTT (ICT)",
+      "title": "Sổ tay Thiết kế Lược đồ CSDL Quan hệ, Khóa chính & Khóa ngoài",
+      "category": "Cơ sở dữ liệu",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/b/b3/ER_diagram_of_schema_ENWIKI_with_foreign_keys.svg",
+      "imageCaption": "Lược đồ cơ sở dữ liệu quan hệ với các ràng buộc toàn vẹn khóa chính và khóa ngoài",
+      "format": "Cẩm nang CSDL",
+      "pages": "32 trang",
+      "updatedAt": "2026",
+      "description": "Tài liệu chuyên sâu định hướng ICT: Phương pháp thiết kế CSDL từ bảng thực thể, xác định khóa chính (Primary Key), khóa ngoài (Foreign Key), thiết lập mối quan hệ 1-1, 1-N, N-N và đảm bảo toàn vẹn dữ liệu.",
+      "highlights": [
+        "Quy tắc chọn khóa chính không rỗng (NOT NULL) và không trùng lặp",
+        "Cơ chế khóa ngoài bảo đảm tính toàn vẹn tham chiếu giữa các bảng",
+        "Bài tập phân tích lược đồ quản lý Điểm học sinh, Thư viện và Bán hàng"
+      ]
+    },
+    {
+      "id": "doc-11-03",
+      "grade": "11",
+      "gradeName": "Tin học 11 KNTT (CS)",
+      "title": "Cẩm nang Thuật toán Tìm kiếm & Sắp xếp (Định hướng CS)",
+      "category": "Khoa học máy tính",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/6/6a/Binary_Search_Example.png",
+      "imageCaption": "Minh họa từng bước thu hẹp phạm vi tìm kiếm của thuật toán Tìm kiếm nhị phân",
       "format": "Cẩm nang thuật toán",
-      "pages": "35 trang",
-      "updatedAt": "2026",
-      "description": "Phương pháp lập bảng vết (Trace Table) để nhẩm nhanh kết quả vòng lặp for/while, đệ quy và danh sách trong Python không cần máy tính.",
-      "highlights": [
-        "Phân tích độ phức tạp O(1), O(log n), O(n), O(n²)",
-        "Minh họa từng bước Tìm kiếm nhị phân, Sắp xếp chọn, Nổi bọt",
-        "Mẹo tránh bẫy chỉ số âm và cắt lát danh sách (List Slicing)"
-      ]
-    },
-    {
-      "id": "doc-04",
-      "title": "Bộ phân tích Đề tham khảo Tốt nghiệp THPT môn Tin học của Bộ GD&ĐT",
-      "category": "Cấu trúc đề thi",
-      "format": "Ma trận & Giải chi tiết",
       "pages": "30 trang",
       "updatedAt": "2026",
-      "description": "Phân tích ma trận đề thi gồm Phần I (24 câu trắc nghiệm 4 lựa chọn) và Phần II (4 câu trắc nghiệm Đúng/Sai phân hóa).",
+      "description": "Phân tích thuật toán và cài đặt Python: Tìm kiếm tuần tự O(n), Tìm kiếm nhị phân O(log n), Sắp xếp chèn (Insertion Sort), Sắp xếp chọn (Selection Sort), Sắp xếp nổi bọt (Bubble Sort) và kỹ thuật lập bảng vết.",
       "highlights": [
-        "Cách tính điểm lũy tiến phần câu hỏi Đúng/Sai (0.1 - 0.25 - 0.5 - 1.0 điểm)",
-        "Chiến thuật phân bổ 50 phút làm bài đạt hiệu quả tối đa",
-        "Danh mục các lỗi mất điểm đáng tiếc cần tránh"
+        "Bảng so sánh độ phức tạp thời gian tốt nhất, xấu nhất và trung bình của các thuật toán",
+        "Sơ đồ từng bước hoán đổi và dịch chuyển vị trí phần tử trong sắp xếp",
+        "Mẹo lập bảng vết (Trace Table) để trả lời nhanh các câu hỏi trắc nghiệm"
+      ]
+    },
+    {
+      "id": "doc-12-01",
+      "grade": "12",
+      "gradeName": "Tin học 12 KNTT",
+      "title": "Sổ tay Toàn diện Trí tuệ Nhân tạo (AI), Machine Learning & Deep Learning",
+      "category": "Trí tuệ nhân tạo",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/8/83/Artificial_Intelligence_relation_to_Generative_Models_subset%2C_Venn_diagram.png",
+      "imageCaption": "Sơ đồ Venn phân tầng mối quan hệ giữa Trí tuệ nhân tạo (AI), Học máy (ML) và Học sâu (DL)",
+      "format": "Infographic & Lý thuyết",
+      "pages": "36 trang",
+      "updatedAt": "2026",
+      "description": "Tổng hợp kiến thức Chủ đề A Tin học 12 KNTT: Lịch sử phát triển AI, phép thử Turing, các đặc trưng cốt lõi (học, suy luận, nhận thức), phân loại AI hẹp (Narrow AI) và AI tổng quát (AGI), các ứng dụng thị giác máy tính, NLP và đạo đức số.",
+      "highlights": [
+        "Bảng đối chiếu đặc trưng và giới hạn giữa AI Hẹp và AI Tổng Quát",
+        "Quy trình huấn luyện mô hình Học máy từ tập dữ liệu gán nhãn",
+        "Bộ 30 câu hỏi trắc nghiệm Đúng/Sai bám sát cấu trúc đề thi tốt nghiệp THPT"
+      ]
+    },
+    {
+      "id": "doc-12-02",
+      "grade": "12",
+      "gradeName": "Tin học 12 KNTT",
+      "title": "Kiến trúc Mạng Máy Tính, Thiết bị Switch/Router & Giao thức TCP/IP",
+      "category": "Mạng máy tính",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/4/43/Router-Switch.png",
+      "imageCaption": "Sơ đồ phân định vai trò kết nối giữa Router (Tầng Mạng - Địa chỉ IP) và Switch (Tầng Liên kết - Địa chỉ MAC)",
+      "format": "Tài liệu kỹ thuật",
+      "pages": "38 trang",
+      "updatedAt": "2026",
+      "description": "Toàn cảnh Chủ đề B Tin 12 KNTT: Môi trường truyền dẫn (cáp UTP đầu RJ45, cáp quang, sóng vô tuyến), thiết bị mạng (Switch, Router, Access Point, Modem), mô hình TCP/IP, cấu trúc địa chỉ IPv4/IPv6, dải IP riêng và hệ thống DNS.",
+      "highlights": [
+        "Nguyên lý chuyển tiếp khung tin theo MAC của Switch và định tuyến gói tin theo IP của Router",
+        "Phân biệt dải địa chỉ IP riêng (Private 192.168.x.x) dùng trong mạng LAN và IP công cộng",
+        "Quy trình 4 bước phân giải tên miền (DNS) từ tên website sang địa chỉ IP máy chủ"
+      ]
+    },
+    {
+      "id": "doc-12-03",
+      "grade": "12",
+      "gradeName": "Tin học 12 KNTT (ICT)",
+      "title": "Sổ tay Tra cứu Thẻ HTML5 & Mô hình Hộp CSS Box Model",
+      "category": "Thiết kế Web",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/b/b2/CSS-Box-Modell.png",
+      "imageCaption": "Mô hình hộp CSS Box Model: Margin (Khoảng cách ngoài), Border (Viền), Padding (Đệm) và Content (Nội dung)",
+      "format": "Cheat Sheet & Bảng tra",
+      "pages": "32 trang",
+      "updatedAt": "2026",
+      "description": "Tài liệu thực hành Chủ đề D Tin 12 ICT: Tra cứu nhanh các thẻ cấu trúc trang web, thẻ tiêu đề h1-h6, bảng table (tr, th, td), siêu liên kết a, chèn ảnh img; cú pháp bộ chọn CSS (tag, class, id), thứ tự ưu tiên và mô hình CSS Box Model.",
+      "highlights": [
+        "Sơ đồ tính toán kích thước tổng thể phần tử web theo CSS Box Model",
+        "Bảng so sánh 3 phương thức nhúng CSS: Inline style, Internal <style> và External <link>",
+        "Các mẫu code HTML/CSS hoàn chỉnh chuẩn W3C thường xuất hiện trong đề kiểm tra"
+      ]
+    },
+    {
+      "id": "doc-12-04",
+      "grade": "12",
+      "gradeName": "Tin học 12 KNTT (ICT)",
+      "title": "Chuyên đề Truy vấn SQL Thực Chiến & Các Lệnh SELECT, JOIN, GROUP BY",
+      "category": "Cơ sở dữ liệu",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/e/ed/Box-model.svg",
+      "imageCaption": "Sơ đồ khối cấu trúc phân cấp câu lệnh truy vấn dữ liệu SQL quan hệ",
+      "format": "Cẩm nang SQL",
+      "pages": "30 trang",
+      "updatedAt": "2026",
+      "description": "Hướng dẫn viết câu lệnh SQL trích xuất dữ liệu có điều kiện với WHERE, sắp xếp ORDER BY ASC/DESC, gom nhóm GROUP BY, lọc nhóm HAVING và kết nối bảng với INNER JOIN.",
+      "highlights": [
+        "Mẫu cú pháp truy vấn SELECT 6 mệnh đề chuẩn dễ ghi nhớ",
+        "Phân biệt điều kiện lọc từng dòng (WHERE) và điều kiện lọc trên hàm tổng hợp (HAVING)",
+        "Tuyển tập 40 bài tập truy vấn thực tế có đáp án giải thích chi tiết"
+      ]
+    },
+    {
+      "id": "doc-12-05",
+      "grade": "12",
+      "gradeName": "Ôn thi THPT 2025+",
+      "title": "Ma trận Đề thi & Chiến thuật Làm bài Thi Tốt Nghiệp THPT Môn Tin Học",
+      "category": "Luyện thi THPT",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/a/aa/Requests_Python_Logo.png",
+      "imageCaption": "Tài liệu ôn thi tốt nghiệp THPT bám sát chuẩn kiến thức GDPT 2018 của Bộ GD&ĐT",
+      "format": "Ma trận & Hướng dẫn",
+      "pages": "45 trang",
+      "updatedAt": "2026",
+      "description": "Phân tích toàn diện cấu trúc định dạng đề thi mới của Bộ GD&ĐT từ năm 2025: Phần I (24 câu trắc nghiệm nhiều lựa chọn), Phần II (4 câu trắc nghiệm Đúng/Sai lũy tiến điểm 0.1 - 0.25 - 0.5 - 1.0) và Phần III (Trả lời ngắn).",
+      "highlights": [
+        "Chiến thuật tối ưu điểm số phần câu hỏi Đúng/Sai và Trả lời ngắn",
+        "Bộ 20 bẫy lý thuyết phổ biến về Python, Mạng, SQL cần đặc biệt lưu ý",
+        "Bảng tổng hợp từ khóa cốt lõi của toàn bộ 3 khối lớp 10, 11, 12 KNTT"
       ]
     }
   ],

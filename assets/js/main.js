@@ -325,38 +325,119 @@ const App = {
     const container = document.getElementById('page-content');
     if (!container) return;
 
-    const docsHtml = data.documents.map(doc => {
-      const highlightsHtml = doc.highlights.map(h => `<li>${QuizEngine.escapeHtml(h)}</li>`).join('');
-      return `
-        <div class="card">
-          <div>
-            <div class="card-header">
-              <span class="badge">${doc.category}</span>
-              <span class="badge badge-warning">${doc.format} • ${doc.pages}</span>
+    let activeGrade = 'all';
+
+    const renderList = () => {
+      const filteredDocs = (data.documents || []).filter(doc => {
+        if (activeGrade === 'all') return true;
+        return doc.grade === activeGrade;
+      });
+
+      const countText = document.getElementById('doc-count-display');
+      if (countText) {
+        countText.textContent = `Hiển thị ${filteredDocs.length} tài liệu`;
+      }
+
+      const gridEl = document.getElementById('documents-grid');
+      if (!gridEl) return;
+
+      if (filteredDocs.length === 0) {
+        gridEl.innerHTML = `
+          <div class="card" style="grid-column: 1 / -1; text-align: center; padding: 3rem;">
+            <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">📂</div>
+            <h3 class="card-title">Chưa có tài liệu cho phân mục này</h3>
+            <p style="color: var(--text-secondary); margin-top: 0.5rem;">Vui lòng chọn khối lớp khác hoặc chuyển sang "Tất cả tài liệu".</p>
+          </div>
+        `;
+        return;
+      }
+
+      gridEl.innerHTML = filteredDocs.map(doc => {
+        const highlightsHtml = (doc.highlights || []).map(h => `<li>${QuizEngine.escapeHtml(h)}</li>`).join('');
+        
+        let gradeBadgeClass = 'badge-grade-12';
+        if (doc.grade === '10') gradeBadgeClass = 'badge-grade-10';
+        else if (doc.grade === '11') gradeBadgeClass = 'badge-grade-11';
+
+        const imageHtml = doc.image ? `
+          <div class="doc-image-wrap">
+            <img src="${doc.image}" alt="${QuizEngine.escapeHtml(doc.title)}" class="doc-image" loading="lazy" />
+            ${doc.imageCaption ? `<div class="doc-image-caption" title="${QuizEngine.escapeHtml(doc.imageCaption)}">📷 ${QuizEngine.escapeHtml(doc.imageCaption)}</div>` : ''}
+          </div>
+        ` : '';
+
+        return `
+          <div class="card doc-card">
+            <div>
+              ${imageHtml}
+              <div class="card-header" style="margin-bottom: 0.6rem;">
+                <span class="badge ${gradeBadgeClass}">LỚP ${doc.grade || '12'}</span>
+                <span class="badge">${doc.category}</span>
+                <span class="badge badge-warning">${doc.format || 'Tài liệu số'} • ${doc.pages || ''}</span>
+              </div>
+              <h2 class="card-title" style="margin-bottom: 0.5rem; font-size: 1.15rem;">📄 ${QuizEngine.escapeHtml(doc.title)}</h2>
+              <p style="color: var(--text-secondary); font-size: 0.93rem; margin-bottom: 0.85rem; line-height: 1.55;">
+                ${QuizEngine.escapeHtml(doc.description)}
+              </p>
+              <ul class="key-points-list" style="margin-bottom: 1rem;">
+                ${highlightsHtml}
+              </ul>
             </div>
-            <h2 class="card-title" style="margin-bottom: 0.5rem;">📄 ${doc.title}</h2>
-            <p style="color: var(--text-secondary); font-size: 0.94rem;">${doc.description}</p>
-            <ul class="key-points-list">
-              ${highlightsHtml}
-            </ul>
+            <div style="display: flex; gap: 0.65rem; margin-top: auto; padding-top: 0.85rem; border-top: 1px solid var(--border-color);">
+              <a href="theory.html" class="btn btn-primary btn-sm">📖 Đọc lý thuyết</a>
+              <a href="practice.html" class="btn btn-outline btn-sm">✍️ Luyện trắc nghiệm</a>
+            </div>
           </div>
-          <div style="display: flex; gap: 0.65rem; margin-top: 1rem;">
-            <a href="theory.html" class="btn btn-primary btn-sm">Đọc trực tuyến</a>
-            <a href="practice.html" class="btn btn-outline btn-sm">Luyện câu hỏi đi kèm</a>
-          </div>
-        </div>
-      `;
-    }).join('');
+        `;
+      }).join('');
+    };
+
+    const countAll = (data.documents || []).length;
+    const count10 = (data.documents || []).filter(d => d.grade === '10').length;
+    const count11 = (data.documents || []).filter(d => d.grade === '11').length;
+    const count12 = (data.documents || []).filter(d => d.grade === '12').length;
 
     container.innerHTML = `
       <div class="card" style="margin-bottom: 1.5rem;">
-        <h1 class="card-title" style="font-size: 1.5rem;">📂 Thư Viện Tài Liệu Ôn Tập & Tham Khảo</h1>
-        <p style="color: var(--text-secondary);">Tổng hợp đề cương, sổ tay công thức SQL, bảng tra cứu thẻ HTML/CSS và ma trận đề tham khảo Tốt nghiệp THPT.</p>
+        <h1 class="card-title" style="font-size: 1.55rem;">📂 Thư Viện Tài Liệu Ôn Tập SGK Tin Học 10 - 11 - 12 (KNTT)</h1>
+        <p style="color: var(--text-secondary); margin-top: 0.3rem;">
+          Hệ thống tài liệu học tập, sơ đồ tư duy trực quan, bảng tra cứu cú pháp và hình ảnh minh họa thực tế được phân loại theo từng khối lớp chuẩn GDPT 2018.
+        </p>
       </div>
-      <div class="grid-2">
-        ${docsHtml}
+
+      <div class="doc-filter-bar">
+        <div class="doc-filter-tabs">
+          <button type="button" class="doc-tab-btn active" data-grade="all">
+            Tất cả tài liệu (${countAll})
+          </button>
+          <button type="button" class="doc-tab-btn" data-grade="10">
+            Lớp 10 (${count10})
+          </button>
+          <button type="button" class="doc-tab-btn" data-grade="11">
+            Lớp 11 (${count11})
+          </button>
+          <button type="button" class="doc-tab-btn" data-grade="12">
+            Lớp 12 & Ôn thi THPT (${count12})
+          </button>
+        </div>
+        <div class="doc-count-badge" id="doc-count-display">
+          Hiển thị ${countAll} tài liệu
+        </div>
       </div>
+
+      <div class="grid-2" id="documents-grid"></div>
     `;
+
+    container.querySelectorAll('.doc-tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        container.querySelectorAll('.doc-tab-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        activeGrade = btn.getAttribute('data-grade');
+        renderList();
+      });
+    });
+
+    renderList();
   },
 
   renderRoadmapPage(data) {

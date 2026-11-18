@@ -832,3 +832,125 @@ main.main-content {
   background-color: rgba(239, 68, 68, 0.08);
   color: #dc2626;
 }
+
+/* ==========================================================================
+   TÀI LIỆU HỌC TẬP PHÂN THEO KHỐI LỚP 10, 11, 12
+   ========================================================================== */
+.doc-filter-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  background-color: var(--bg-card);
+  padding: 0.85rem 1.25rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  margin-bottom: 1.5rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.doc-filter-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.doc-tab-btn {
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-body);
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.doc-tab-btn:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.doc-tab-btn.active {
+  background-color: var(--primary);
+  border-color: var(--primary);
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(29, 78, 216, 0.25);
+}
+
+.doc-count-badge {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.doc-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+.doc-image-wrap {
+  width: 100%;
+  max-height: 220px;
+  background-color: #f1f5f9;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+  border: 1px solid var(--border-color);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+[data-theme="dark"] .doc-image-wrap {
+  background-color: #0b1120;
+}
+
+.doc-image {
+  width: 100%;
+  max-height: 180px;
+  object-fit: contain;
+  padding: 0.5rem;
+  transition: transform 0.3s ease;
+}
+
+.doc-card:hover .doc-image {
+  transform: scale(1.02);
+}
+
+.doc-image-caption {
+  width: 100%;
+  background-color: rgba(15, 23, 42, 0.75);
+  backdrop-blur: 4px;
+  color: #f8fafc;
+  font-size: 0.75rem;
+  padding: 0.3rem 0.65rem;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.badge-grade-10 {
+  background-color: rgba(16, 185, 129, 0.15);
+  color: #059669;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.badge-grade-11 {
+  background-color: rgba(59, 130, 246, 0.15);
+  color: #2563eb;
+  border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+.badge-grade-12 {
+  background-color: rgba(168, 85, 247, 0.15);
+  color: #9333ea;
+  border: 1px solid rgba(168, 85, 247, 0.3);
+}
+
