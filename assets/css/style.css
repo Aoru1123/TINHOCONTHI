@@ -665,3 +665,170 @@ main.main-content {
     font-size: 1.55rem;
   }
 }
+
+/* ==========================================================================
+   CẤU TRÚC ĐỀ THI MỚI (ĐÚNG/SAI & TRẢ LỜI NGẮN)
+   ========================================================================== */
+.exam-part-header {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: #ffffff;
+  padding: 0.85rem 1.25rem;
+  border-radius: var(--radius-md);
+  margin: 1.75rem 0 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: var(--shadow-sm);
+}
+
+.exam-part-header h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.exam-part-header span {
+  font-size: 0.82rem;
+  opacity: 0.9;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+}
+
+/* True / False Question Styling */
+.tf-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 0.5rem;
+  margin-top: 1rem;
+}
+
+.tf-row {
+  background-color: var(--bg-body);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  transition: var(--transition);
+}
+
+.tf-row td {
+  padding: 0.75rem 1rem;
+  vertical-align: middle;
+}
+
+.tf-statement-cell {
+  width: 70%;
+  font-size: 0.95rem;
+  color: var(--text-main);
+}
+
+.tf-actions-cell {
+  width: 30%;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.tf-btn-group {
+  display: inline-flex;
+  gap: 0.4rem;
+  background-color: var(--bg-muted);
+  padding: 0.25rem;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+}
+
+.tf-btn {
+  padding: 0.35rem 0.85rem;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+.tf-btn:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.tf-btn.selected-true {
+  background-color: #10b981 !important;
+  color: #ffffff !important;
+  box-shadow: 0 2px 6px rgba(16, 185, 129, 0.3);
+}
+
+.tf-btn.selected-false {
+  background-color: #ef4444 !important;
+  color: #ffffff !important;
+  box-shadow: 0 2px 6px rgba(239, 68, 68, 0.3);
+}
+
+.tf-row.correct-row {
+  border-left: 4px solid #10b981;
+  background-color: rgba(16, 185, 129, 0.05);
+}
+
+.tf-row.incorrect-row {
+  border-left: 4px solid #ef4444;
+  background-color: rgba(239, 68, 68, 0.05);
+}
+
+.tf-feedback {
+  margin-top: 0.35rem;
+  font-size: 0.85rem;
+  padding: 0.3rem 0.6rem;
+  border-radius: 6px;
+}
+
+.tf-feedback.is-correct {
+  background-color: rgba(16, 185, 129, 0.15);
+  color: #059669;
+}
+
+.tf-feedback.is-incorrect {
+  background-color: rgba(239, 68, 68, 0.15);
+  color: #dc2626;
+}
+
+/* Short Answer Question Styling */
+.short-answer-container {
+  margin-top: 1rem;
+}
+
+.short-answer-input-wrap {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  max-width: 500px;
+}
+
+.short-answer-input {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  background-color: var(--bg-body);
+  color: var(--text-main);
+  font-size: 1rem;
+  font-weight: 600;
+  outline: none;
+  transition: var(--transition);
+}
+
+.short-answer-input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(29, 78, 216, 0.15);
+}
+
+.short-answer-input.correct {
+  border-color: #10b981;
+  background-color: rgba(16, 185, 129, 0.08);
+  color: #059669;
+}
+
+.short-answer-input.incorrect {
+  border-color: #ef4444;
+  background-color: rgba(239, 68, 68, 0.08);
+  color: #dc2626;
+}

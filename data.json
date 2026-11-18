@@ -13,15 +13,60 @@
     }
   },
   "navigation": [
-    { "id": "home", "title": "Trang chủ", "url": "index.html", "icon": "🏠" },
-    { "id": "videos", "title": "Video bài giảng", "url": "videos.html", "icon": "🎥" },
-    { "id": "theory", "title": "Kho lý thuyết", "url": "theory.html", "icon": "📘" },
-    { "id": "topics", "title": "Chuyên đề", "url": "topics.html", "icon": "🧩" },
-    { "id": "practice", "title": "Luyện tập", "url": "practice.html", "icon": "✍️" },
-    { "id": "exams", "title": "Đề thi thử", "url": "exams.html", "icon": "⏱️" },
-    { "id": "documents", "title": "Tài liệu", "url": "documents.html", "icon": "📂" },
-    { "id": "roadmap", "title": "Lộ trình", "url": "roadmap.html", "icon": "🗺️" },
-    { "id": "contact", "title": "Liên hệ", "url": "contact.html", "icon": "📞" }
+    {
+      "id": "home",
+      "title": "Trang chủ",
+      "url": "index.html",
+      "icon": "🏠"
+    },
+    {
+      "id": "videos",
+      "title": "Video bài giảng",
+      "url": "videos.html",
+      "icon": "🎥"
+    },
+    {
+      "id": "theory",
+      "title": "Kho lý thuyết",
+      "url": "theory.html",
+      "icon": "📘"
+    },
+    {
+      "id": "topics",
+      "title": "Chuyên đề",
+      "url": "topics.html",
+      "icon": "🧩"
+    },
+    {
+      "id": "practice",
+      "title": "Luyện tập",
+      "url": "practice.html",
+      "icon": "✍️"
+    },
+    {
+      "id": "exams",
+      "title": "Đề thi thử",
+      "url": "exams.html",
+      "icon": "⏱️"
+    },
+    {
+      "id": "documents",
+      "title": "Tài liệu",
+      "url": "documents.html",
+      "icon": "📂"
+    },
+    {
+      "id": "roadmap",
+      "title": "Lộ trình",
+      "url": "roadmap.html",
+      "icon": "🗺️"
+    },
+    {
+      "id": "contact",
+      "title": "Liên hệ",
+      "url": "contact.html",
+      "icon": "📞"
+    }
   ],
   "theory": [
     {
@@ -377,32 +422,327 @@
       ],
       "correctIndex": 1,
       "explanation": "Lệnh ds.append(60) thêm 60 vào cuối danh sách -> [10, 20, 30, 40, 50, 60]. Sau đó ds.pop(1) xóa phần tử ở chỉ số 1 (là số 20, vì chỉ số tính từ 0) -> kết quả còn [10, 30, 40, 50, 60]."
+    },
+    {
+      "id": "tf-01",
+      "type": "true_false",
+      "part": "Phần II: Câu trắc nghiệm Đúng / Sai",
+      "topicId": "tp-ai",
+      "topicName": "Trí tuệ nhân tạo (Tin 12 KNTT)",
+      "question": "Trong bài học 'Làm quen với Trí tuệ nhân tạo' (SGK Tin học 12 - Kết nối tri thức), khi nghiên cứu về đặc trưng và phân loại của AI, các nhận định sau đây là đúng hay sai?",
+      "items": [
+        {
+          "id": "a",
+          "text": "Trí tuệ nhân tạo (AI) là khả năng của máy tính hoặc hệ thống máy tính thực hiện các công việc đòi hỏi trí thông minh của con người như học tập, suy luận và nhận thức.",
+          "correct": true,
+          "explanation": "Đúng. Đây là khái niệm cốt lõi của Trí tuệ nhân tạo được nêu trong Bài 1 SGK Tin học 12 KNTT."
+        },
+        {
+          "id": "b",
+          "text": "Hệ thống AI hẹp (Narrow AI) là hệ thống sở hữu năng lực trí tuệ toàn diện tương đương con người trong mọi lĩnh vực xã hội.",
+          "correct": false,
+          "explanation": "Sai. AI có trí thông minh ngang con người trong mọi lĩnh vực là AI tổng quát (AGI). AI hẹp chỉ thực hiện một nhiệm vụ cụ thể."
+        },
+        {
+          "id": "c",
+          "text": "Khả năng học (Machine Learning) là đặc trưng cho phép hệ thống AI tự cải thiện hiệu quả từ dữ liệu mà không cần người dùng viết lại quy tắc mã lệnh.",
+          "correct": true,
+          "explanation": "Đúng. Khả năng tự học từ dữ liệu là nền tảng cốt lõi của Học máy và AI hiện đại."
+        },
+        {
+          "id": "d",
+          "text": "Thuật toán tìm đường đi ngắn nhất của Google Maps và nhận diện khuôn mặt trên điện thoại là các ứng dụng tiêu biểu của AI tổng quát (AGI).",
+          "correct": false,
+          "explanation": "Sai. Cả hai đều là ứng dụng của AI hẹp (Narrow AI), giải quyết một bài toán nghiệp vụ chuyên biệt."
+        }
+      ]
+    },
+    {
+      "id": "tf-02",
+      "type": "true_false",
+      "part": "Phần II: Câu trắc nghiệm Đúng / Sai",
+      "topicId": "tp-web",
+      "topicName": "Thiết kế Web HTML & CSS (Tin 12 KNTT)",
+      "question": "Khi tìm hiểu về ngôn ngữ HTML và CSS để xây dựng trang web (SGK Tin học 12 KNTT - Định hướng Tin học ứng dụng), các phát biểu sau đây là đúng hay sai?",
+      "items": [
+        {
+          "id": "a",
+          "text": "Thẻ <a> trong HTML bắt buộc phải có thuộc tính href để chỉ định địa chỉ URL của trang web đích cần liên kết tới.",
+          "correct": true,
+          "explanation": "Đúng. Thuộc tính href (Hypertext Reference) xác định điểm đến của siêu liên kết."
+        },
+        {
+          "id": "b",
+          "text": "Trong cấu trúc bảng của HTML, thẻ <td> dùng để định nghĩa hàng của bảng, còn thẻ <tr> dùng để tạo ô dữ liệu trong bảng.",
+          "correct": false,
+          "explanation": "Sai. Thẻ <tr> (table row) mới là hàng của bảng, còn <td> (table data) là ô dữ liệu."
+        },
+        {
+          "id": "c",
+          "text": "Bộ chọn class trong CSS được bắt đầu bằng ký tự dấu thăng (#), còn bộ chọn id được bắt đầu bằng ký tự dấu chấm (.).",
+          "correct": false,
+          "explanation": "Sai. Quy tắc ngược lại: bộ chọn class bắt đầu bằng dấu chấm (.), còn bộ chọn id bắt đầu bằng dấu thăng (#)."
+        },
+        {
+          "id": "d",
+          "text": "Khi áp dụng định dạng xung đột giữa CSS nội tuyến (Inline style) và CSS ngoài (External style sheet), CSS nội tuyến sẽ có mức độ ưu tiên cao hơn.",
+          "correct": true,
+          "explanation": "Đúng. CSS nội tuyến viết trực tiếp trong thuộc tính style của thẻ nên có độ ưu tiên cao hơn liên kết ngoài."
+        }
+      ]
+    },
+    {
+      "id": "tf-03",
+      "type": "true_false",
+      "part": "Phần II: Câu trắc nghiệm Đúng / Sai",
+      "topicId": "tp-db",
+      "topicName": "Cơ sở dữ liệu & SQL (Tin 11 & 12 KNTT)",
+      "question": "Trong Hệ cơ sở dữ liệu quan hệ (SGK Tin học 11 & 12 - Kết nối tri thức), các khẳng định sau về cấu trúc bảng và khóa là đúng hay sai?",
+      "items": [
+        {
+          "id": "a",
+          "text": "Khóa chính (Primary Key) của một bảng có thể nhận giá trị rỗng (NULL) nếu bản ghi đó chưa có đầy đủ thông tin.",
+          "correct": false,
+          "explanation": "Sai. Theo quy tắc toàn vẹn thực thể trong mô hình quan hệ, khóa chính KHÔNG BAO GIỜ được mang giá trị NULL."
+        },
+        {
+          "id": "b",
+          "text": "Một bảng trong cơ sở dữ liệu quan hệ có thể có nhiều trường cùng tham gia vào việc tạo thành một khóa chính (khóa tổng hợp).",
+          "correct": true,
+          "explanation": "Đúng. Khóa chính có thể bao gồm từ một hoặc nhiều thuộc tính kết hợp lại để định danh duy nhất bản ghi."
+        },
+        {
+          "id": "c",
+          "text": "Khóa ngoài (Foreign Key) là một hoặc một nhóm thuộc tính của bảng này nhưng tham chiếu đến khóa chính của bảng khác.",
+          "correct": true,
+          "explanation": "Đúng. Khóa ngoài dùng để tạo liên kết logic giữa các bảng và đảm bảo tính toàn vẹn tham chiếu."
+        },
+        {
+          "id": "d",
+          "text": "Lệnh SQL: `SELECT HoTen FROM HocSinh WHERE DiemTB >= 8.0 ORDER BY HoTen DESC;` sẽ sắp xếp danh sách học sinh theo thứ tự họ tên tăng dần từ A đến Z.",
+          "correct": false,
+          "explanation": "Sai. Từ khóa DESC (Descending) chỉ định sắp xếp giảm dần (từ Z về A), tăng dần phải là ASC (Ascending)."
+        }
+      ]
+    },
+    {
+      "id": "tf-04",
+      "type": "true_false",
+      "part": "Phần II: Câu trắc nghiệm Đúng / Sai",
+      "topicId": "tp-py",
+      "topicName": "Lập trình Python (Tin 10 KNTT)",
+      "question": "Cho đoạn chương trình Python sau (SGK Tin học 10 KNTT - Bài 23 & 24):\n```python\na = [10, 20, 30, 40]\na.append(50)\na.insert(1, 15)\ns = \"KNTT-2025\"\n```\nCác nhận xét sau về trạng thái dữ liệu là đúng hay sai?",
+      "items": [
+        {
+          "id": "a",
+          "text": "Sau lệnh a.append(50), độ dài len(a) của danh sách a tăng thêm 1 và giá trị 50 nằm ở vị trí cuối cùng.",
+          "correct": true,
+          "explanation": "Đúng. Phương thức append(x) luôn thêm phần tử x vào cuối danh sách."
+        },
+        {
+          "id": "b",
+          "text": "Sau lệnh a.insert(1, 15), phần tử tại chỉ số index 1 của danh sách a mang giá trị 15.",
+          "correct": true,
+          "explanation": "Đúng. insert(i, x) chèn giá trị x vào đúng vị trí chỉ số i, các phần tử phía sau lùi lại 1 vị trí."
+        },
+        {
+          "id": "c",
+          "text": "Giá trị của biểu thức cắt xâu s[0:4] sẽ trả về chuỗi 'KNTT-'.",
+          "correct": false,
+          "explanation": "Sai. Cắt xâu s[0:4] lấy từ chỉ số 0 đến 3 (không gồm chỉ số 4), nên kết quả là 'KNTT' (4 ký tự)."
+        },
+        {
+          "id": "d",
+          "text": "Trong Python, ta có thể thay đổi trực tiếp ký tự đầu tiên của xâu s bằng câu lệnh gán: `s[0] = 'H'`.",
+          "correct": false,
+          "explanation": "Sai. Kiểu dữ liệu xâu ký tự (str) trong Python là bất biến (immutable), không hỗ trợ phép gán trực tiếp phần tử theo chỉ số (TypeError)."
+        }
+      ]
+    },
+    {
+      "id": "tf-05",
+      "type": "true_false",
+      "part": "Phần II: Câu trắc nghiệm Đúng / Sai",
+      "topicId": "tp-net",
+      "topicName": "Mạng máy tính & TCP/IP (Tin 11 & 12 KNTT)",
+      "question": "Khi nghiên cứu về mạng máy tính và giao thức truyền thông theo SGK Tin học 11 & 12 Kết Nối Tri Thức, các phát biểu sau đúng hay sai?",
+      "items": [
+        {
+          "id": "a",
+          "text": "Switch (bộ chuyển mạch) chuyển tiếp các gói dữ liệu dựa trên địa chỉ IP của máy nhận.",
+          "correct": false,
+          "explanation": "Sai. Switch hoạt động ở tầng liên kết dữ liệu và chuyển tiếp khung tin dựa trên địa chỉ MAC (vật lý). Router mới là thiết bị định tuyến theo địa chỉ IP."
+        },
+        {
+          "id": "b",
+          "text": "Địa chỉ MAC là địa chỉ vật lý duy nhất được gán cố định cho mỗi card mạng (NIC) bởi nhà sản xuất.",
+          "correct": true,
+          "explanation": "Đúng. Địa chỉ MAC gồm 48 bit (6 cặp hexa) được gắn chết trên phần cứng giao tiếp mạng."
+        },
+        {
+          "id": "c",
+          "text": "Giao thức TCP trong bộ giao thức TCP/IP đảm bảo việc truyền tải dữ liệu giữa hai đầu mối diễn ra tin cậy, không mất mát và đúng thứ tự.",
+          "correct": true,
+          "explanation": "Đúng. TCP thiết lập kết nối (bắt tay 3 bước) và kiểm tra xác nhận truyền tin cậy."
+        },
+        {
+          "id": "d",
+          "text": "Địa chỉ 192.168.1.1 là địa chỉ IP công cộng (Public IP) có thể định tuyến trực tiếp trên mạng Internet toàn cầu.",
+          "correct": false,
+          "explanation": "Sai. Dải 192.168.0.0/16 là dải địa chỉ IP riêng (Private IP) dùng cho mạng nội bộ (LAN), không định tuyến trực tiếp ra Internet mà phải qua NAT."
+        }
+      ]
+    },
+    {
+      "id": "sa-01",
+      "type": "short_answer",
+      "part": "Phần III: Câu trắc nghiệm Trả lời ngắn",
+      "topicId": "tp-py",
+      "topicName": "Lập trình Python (Tin 10 KNTT)",
+      "question": "Cho đoạn chương trình Python sau:\n```python\ntong = 0\nfor k in range(1, 8):\n    if k % 2 != 0:\n        tong += k\nprint(tong)\n```\nGiá trị in ra màn hình của biến `tong` sau khi thực hiện xong chương trình là bao nhiêu?",
+      "correctAnswers": [
+        "16"
+      ],
+      "explanation": "Hàm range(1, 8) sinh các số nguyên từ 1 đến 7: {1, 2, 3, 4, 5, 6, 7}. Điều kiện `k % 2 != 0` lọc các số lẻ gồm 1, 3, 5, 7. Tổng là 1 + 3 + 5 + 7 = 16."
+    },
+    {
+      "id": "sa-02",
+      "type": "short_answer",
+      "part": "Phần III: Câu trắc nghiệm Trả lời ngắn",
+      "topicId": "tp-py",
+      "topicName": "Lập trình Python (Tin 10 KNTT)",
+      "question": "Cho xâu ký tự `s = \"TIN HOC KNTT 2025\"`. Khi thực hiện câu lệnh `len(s.split())`, giá trị số nguyên trả về là bao nhiêu?",
+      "correctAnswers": [
+        "4"
+      ],
+      "explanation": "Phương thức s.split() tách xâu s theo khoảng trắng thành danh sách các từ: ['TIN', 'HOC', 'KNTT', '2025']. Do đó độ dài danh sách len(...) bằng 4."
+    },
+    {
+      "id": "sa-03",
+      "type": "short_answer",
+      "part": "Phần III: Câu trắc nghiệm Trả lời ngắn",
+      "topicId": "tp-db",
+      "topicName": "Cơ sở dữ liệu & SQL (Tin 12 KNTT)",
+      "question": "Trong ngôn ngữ SQL, từ khóa nào đi cùng với mệnh đề `ORDER BY` để sắp xếp kết quả truy vấn theo thứ tự giảm dần? (Viết bằng chữ hoa, gồm 4 chữ cái)",
+      "correctAnswers": [
+        "DESC"
+      ],
+      "explanation": "Từ khóa DESC (Descending) được sử dụng để sắp xếp giảm dần. Tăng dần là ASC (Ascending)."
+    },
+    {
+      "id": "sa-04",
+      "type": "short_answer",
+      "part": "Phần III: Câu trắc nghiệm Trả lời ngắn",
+      "topicId": "tp-net",
+      "topicName": "Mạng máy tính (Tin 10 & 11 KNTT)",
+      "question": "Một địa chỉ IPv4 tiêu chuẩn bao gồm bao nhiêu bit nhị phân? (Nhập đáp án dạng số nguyên)",
+      "correctAnswers": [
+        "32"
+      ],
+      "explanation": "Địa chỉ IPv4 gồm 32 bit nhị phân, thường được biểu diễn dưới dạng 4 octet số thập phân ngăn cách bởi dấu chấm (ví dụ: 192.168.1.1). IPv6 gồm 128 bit."
+    },
+    {
+      "id": "sa-05",
+      "type": "short_answer",
+      "part": "Phần III: Câu trắc nghiệm Trả lời ngắn",
+      "topicId": "tp-web",
+      "topicName": "Thiết kế Web HTML (Tin 12 KNTT)",
+      "question": "Tên thẻ HTML dùng để tạo một liên kết (siêu liên kết - hyperlink) đến trang web khác là thẻ nào? (Chỉ nhập tên thẻ, không bao gồm dấu ngoặc nhọn)",
+      "correctAnswers": [
+        "a",
+        "thẻ a"
+      ],
+      "explanation": "Thẻ <a> (anchor) cùng với thuộc tính href dùng để tạo siêu liên kết trong trang web HTML."
+    },
+    {
+      "id": "sa-06",
+      "type": "short_answer",
+      "part": "Phần III: Câu trắc nghiệm Trả lời ngắn",
+      "topicId": "tp-cs",
+      "topicName": "Khoa học máy tính (Tin 11 KNTT)",
+      "question": "Cho danh sách đã sắp xếp gồm 64 phần tử. Khi áp dụng thuật toán Tìm kiếm nhị phân (Binary Search), số lần so sánh tối đa ở trường hợp xấu nhất để tìm ra phần tử cần tìm là bao nhiêu?",
+      "correctAnswers": [
+        "6",
+        "6 lần"
+      ],
+      "explanation": "Độ phức tạp của tìm kiếm nhị phân là log2(N). Với N = 64 = 2^6, số lần so sánh tối đa là log2(64) = 6 lần."
     }
   ],
   "exams": [
     {
       "id": "exam-01",
-      "title": "Đề thi thử Tốt nghiệp THPT Quốc gia - Đề số 01 (Chuẩn cấu trúc Bộ GD&ĐT)",
-      "durationMinutes": 15,
-      "level": "Cơ bản - Trọng tâm",
-      "description": "Đề kiểm tra tổng hợp kiến thức cốt lõi các chủ đề: Trí tuệ nhân tạo, Mạng máy tính, An toàn thông tin và Thiết kế web HTML/CSS.",
-      "questionIds": ["q-01", "q-02", "q-03", "q-04", "q-05", "q-10", "q-11"]
+      "title": "Đề thi thử Tốt nghiệp THPT 2025 - Đề số 01 (Chuẩn cấu trúc 3 Phần Bộ GD&ĐT)",
+      "durationMinutes": 35,
+      "level": "Chuẩn Cấu Trúc Mới",
+      "description": "Đầy đủ 3 phần: Phần I (Trắc nghiệm nhiều lựa chọn), Phần II (Trắc nghiệm Đúng/Sai 4 ý) và Phần III (Trả lời ngắn) bám sát SGK Tin học 10, 11, 12 Kết Nối Tri Thức.",
+      "questionIds": [
+        "q-01",
+        "q-02",
+        "q-03",
+        "q-04",
+        "q-05",
+        "q-10",
+        "q-11",
+        "q-12",
+        "tf-01",
+        "tf-02",
+        "tf-03",
+        "sa-01",
+        "sa-02",
+        "sa-03"
+      ]
     },
     {
       "id": "exam-02",
-      "title": "Đề thi thử Tốt nghiệp THPT Quốc gia - Đề số 02 (Định hướng Khoa học Máy tính & CSDL)",
-      "durationMinutes": 20,
-      "level": "Vận dụng - Nâng cao",
-      "description": "Tập trung chuyên sâu vào Truy vấn SQL, Cơ sở dữ liệu quan hệ, Thuật toán tìm kiếm và Lập trình Python nâng cao.",
-      "questionIds": ["q-05", "q-06", "q-07", "q-08", "q-09", "q-11", "q-12"]
+      "title": "Đề thi thử Chuyên đề Trắc nghiệm Đúng/Sai & Trả lời ngắn - Đề số 02",
+      "durationMinutes": 30,
+      "level": "Tập trung Dạng mới",
+      "description": "Luyện tập thuần thục 2 dạng thức câu hỏi mới mẻ nhất trong kỳ thi tốt nghiệp THPT: Trắc nghiệm Đúng/Sai và Câu hỏi Trả lời ngắn về AI, Mạng, CSDL và Python.",
+      "questionIds": [
+        "tf-01",
+        "tf-02",
+        "tf-03",
+        "tf-04",
+        "tf-05",
+        "sa-01",
+        "sa-02",
+        "sa-03",
+        "sa-04",
+        "sa-05",
+        "sa-06"
+      ]
     },
     {
       "id": "exam-03",
-      "title": "Đề thi thử Tổng hợp Toàn diện 12 câu - Đề số 03 (Full Ngân hàng)",
-      "durationMinutes": 25,
-      "level": "Tổng hợp toàn diện",
-      "description": "Bao quát toàn bộ 6 chuyên đề trọng tâm ôn thi tốt nghiệp THPT môn Tin học giúp đánh giá năng lực tổng thể.",
-      "questionIds": ["q-01", "q-02", "q-03", "q-04", "q-05", "q-06", "q-07", "q-08", "q-09", "q-10", "q-11", "q-12"]
+      "title": "Đề thi thử Tổng hợp Toàn diện 3 Khối Lớp 10 - 11 - 12 KNTT - Đề số 03",
+      "durationMinutes": 45,
+      "level": "Tổng hợp Toàn diện",
+      "description": "Bao quát toàn diện các chuyên đề trọng điểm: Python cơ bản & cấu trúc dữ liệu, Hệ điều hành, Mạng máy tính, An toàn số, CSDL quan hệ SQL, Thiết kế web HTML/CSS và Trí tuệ nhân tạo AI.",
+      "questionIds": [
+        "q-01",
+        "q-02",
+        "q-03",
+        "q-04",
+        "q-05",
+        "q-06",
+        "q-07",
+        "q-08",
+        "q-09",
+        "q-10",
+        "q-11",
+        "q-12",
+        "tf-01",
+        "tf-02",
+        "tf-03",
+        "tf-04",
+        "tf-05",
+        "sa-01",
+        "sa-02",
+        "sa-03",
+        "sa-04",
+        "sa-05",
+        "sa-06"
+      ]
     }
   ],
   "documents": [
@@ -470,10 +810,22 @@
       "title": "Làm chủ Trí tuệ nhân tạo, Mạng máy tính và An toàn thông tin",
       "goal": "Nắm chắc 100% câu hỏi mức độ Nhận biết và Thông hiểu thuộc Chủ đề A, B, D.",
       "tasks": [
-        { "id": "rm-t1", "text": "Học xong Bài 1: Giới thiệu Trí tuệ nhân tạo (AI hẹp, AI tổng quát, ứng dụng)" },
-        { "id": "rm-t2", "text": "Phân biệt rõ chức năng Switch, Router, Modem, Access Point và giao thức TCP/IP" },
-        { "id": "rm-t3", "text": "Nắm vững quy tắc an toàn thông tin, phòng chống Ransomware, Phishing và đạo đức số" },
-        { "id": "rm-t4", "text": "Hoàn thành 100% câu hỏi trắc nghiệm chủ đề AI, Mạng và An toàn thông tin" }
+        {
+          "id": "rm-t1",
+          "text": "Học xong Bài 1: Giới thiệu Trí tuệ nhân tạo (AI hẹp, AI tổng quát, ứng dụng)"
+        },
+        {
+          "id": "rm-t2",
+          "text": "Phân biệt rõ chức năng Switch, Router, Modem, Access Point và giao thức TCP/IP"
+        },
+        {
+          "id": "rm-t3",
+          "text": "Nắm vững quy tắc an toàn thông tin, phòng chống Ransomware, Phishing và đạo đức số"
+        },
+        {
+          "id": "rm-t4",
+          "text": "Hoàn thành 100% câu hỏi trắc nghiệm chủ đề AI, Mạng và An toàn thông tin"
+        }
       ]
     },
     {
@@ -482,9 +834,18 @@
       "title": "Thành thạo cấu trúc HTML, Biểu mẫu và Định dạng CSS",
       "goal": "Giải quyết trọn vẹn các câu đọc mã HTML/CSS và câu hỏi Đúng/Sai về thiết kế trang web.",
       "tasks": [
-        { "id": "rm-t5", "text": "Thuộc các thẻ văn bản, danh sách (ul, ol), bảng (table, tr, td) và liên kết (a, img)" },
-        { "id": "rm-t6", "text": "Hiểu rõ cơ chế hoạt động của thẻ <form> và các kiểu <input> (text, radio, checkbox, submit)" },
-        { "id": "rm-t7", "text": "Tính đúng độ ưu tiên bộ chọn CSS (#id, .class, tag) và Mô hình hộp (Box Model)" }
+        {
+          "id": "rm-t5",
+          "text": "Thuộc các thẻ văn bản, danh sách (ul, ol), bảng (table, tr, td) và liên kết (a, img)"
+        },
+        {
+          "id": "rm-t6",
+          "text": "Hiểu rõ cơ chế hoạt động của thẻ <form> và các kiểu <input> (text, radio, checkbox, submit)"
+        },
+        {
+          "id": "rm-t7",
+          "text": "Tính đúng độ ưu tiên bộ chọn CSS (#id, .class, tag) và Mô hình hộp (Box Model)"
+        }
       ]
     },
     {
@@ -493,9 +854,18 @@
       "title": "Chinh phục CSDL Quan hệ và Truy vấn SQL (Định hướng ICT)",
       "goal": "Xử lý chính xác các câu hỏi liên kết bảng và câu lệnh SELECT có điều kiện.",
       "tasks": [
-        { "id": "rm-t8", "text": "Xác định chuẩn xác Khóa chính (PK), Khóa ngoài (FK) và mối quan hệ 1-nhiều giữa các bảng" },
-        { "id": "rm-t9", "text": "Viết và đọc hiểu câu lệnh SELECT ... FROM ... INNER JOIN ... WHERE ... ORDER BY" },
-        { "id": "rm-t10", "text": "Làm chủ các hàm thống kê COUNT, SUM, AVG kết hợp GROUP BY" }
+        {
+          "id": "rm-t8",
+          "text": "Xác định chuẩn xác Khóa chính (PK), Khóa ngoài (FK) và mối quan hệ 1-nhiều giữa các bảng"
+        },
+        {
+          "id": "rm-t9",
+          "text": "Viết và đọc hiểu câu lệnh SELECT ... FROM ... INNER JOIN ... WHERE ... ORDER BY"
+        },
+        {
+          "id": "rm-t10",
+          "text": "Làm chủ các hàm thống kê COUNT, SUM, AVG kết hợp GROUP BY"
+        }
       ]
     },
     {
@@ -504,9 +874,18 @@
       "title": "Lập trình Python, Độ phức tạp thuật toán và Thực chiến phòng thi",
       "goal": "Đạt điểm 9+ thông qua luyện đề định kỳ với đồng hồ bấm giờ.",
       "tasks": [
-        { "id": "rm-t11", "text": "Nắm vững thuật toán Tìm kiếm tuần tự O(n), Tìm kiếm nhị phân O(log n) và Sắp xếp O(n²)" },
-        { "id": "rm-t12", "text": "Thực hành chạy tay (trace code) các đoạn mã Python về vòng lặp, hàm và danh sách" },
-        { "id": "rm-t13", "text": "Hoàn thành cả 3 Đề thi thử trên hệ thống với kết quả đạt từ 8.5 điểm trở lên" }
+        {
+          "id": "rm-t11",
+          "text": "Nắm vững thuật toán Tìm kiếm tuần tự O(n), Tìm kiếm nhị phân O(log n) và Sắp xếp O(n²)"
+        },
+        {
+          "id": "rm-t12",
+          "text": "Thực hành chạy tay (trace code) các đoạn mã Python về vòng lặp, hàm và danh sách"
+        },
+        {
+          "id": "rm-t13",
+          "text": "Hoàn thành cả 3 Đề thi thử trên hệ thống với kết quả đạt từ 8.5 điểm trở lên"
+        }
       ]
     }
   ]
